@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teletextlab - Laboratorio de Innovación Digital</title>
+  
+  <!-- FAVICON (Cambié la E por T) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2285%22 font-weight=%22bold%22 font-family=%22monospace%22 fill=%22%2300ff9d%22>T</text></svg>">
+  
+  <!-- OPEN GRAPH (Personalizado para Teletextlab) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://teletextlab.github.io/">
+  <meta property="og:title" content="Teletextlab - Laboratorio de Innovación Digital">
+  <meta property="og:description" content="Exploramos la intersección entre tecnología, diseño y comunicación experimental.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/teletextlab/portfolio/main/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Teletextlab - Laboratorio de Innovación Digital">
+  <meta name="twitter:description" content="Exploramos la intersección entre tecnología, diseño y comunicación experimental.">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/teletextlab/portfolio/main/social-preview.jpg">
+  
+  <meta name="description" content="Teletextlab es un laboratorio de innovación digital especializado en desarrollo web experimental, interfaces únicas y proyectos creativos.">
+  
+  <!-- ESTILOS INLINE -->
+  <style>
+    /* RESET BÁSICO */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0a0a0a; 
+      color: #f0f0f0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #00ff9d;
+      text-decoration: none;
+    }
+    
+    .logo span { color: #fff; }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    nav a:hover { color: #00ff9d; }
+    
+    /* HERO SECTION */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem;
+      padding-top: 80px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      background: linear-gradient(90deg, #fff, #00ff9d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    
+    .subtitle {
+      color: #00ff9d;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    
+    .tagline {
+      font-size: 1.2rem;
+      color: #aaa;
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: #00ff9d;
+      color: #000;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 5px 20px rgba(0, 255, 157, 0.3);
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 255, 157, 0.4);
+    }
+    
+    /* LOGROS */
+    .achievements {
+      padding: 5rem 2rem;
+      background: rgba(20, 20, 30, 0.3);
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #fff;
+    }
+    
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .achievement-card {
+      background: rgba(30, 30, 40, 0.7);
+      border-radius: 15px;
+      padding: 2.5rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s;
+    }
+    
+    .achievement-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 255, 157, 0.3);
+    }
+    
+    .achievement-icon {
+      width: 70px;
+      height: 70px;
+      background: rgba(0, 255, 157, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.8rem;
+    }
+    
+    .achievement-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #00ff9d;
+      margin-bottom: 0.5rem;
+    }
+    
+    .achievement-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .achievement-desc {
+      color: #aaa;
+      font-size: 0.95rem;
+    }
+    
+    /* PROYECTOS */
+    .projects-section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .projects-section > h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .projects-section > p {
+      text-align: center;
+      color: #aaa;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      font-size: 1.1rem;
+    }
+    
+    /* GALERÍA SIMPLIFICADA */
+    .project-gallery {
+      margin-bottom: 4rem;
+      padding: 2rem;
+      background: rgba(20, 20, 20, 0.5);
+      border-radius: 15px;
+    }
+    
+    .project-gallery h2 {
+      color: #00ff9d;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .project-gallery p {
+      text-align: center;
+      color: #ccc;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .gallery img {
+      width: 100%;
+      max-width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s, border-color 0.3s;
+      cursor: pointer;
+    }
+    
+    .gallery img:hover {
+      transform: scale(1.05);
+      border-color: #00ff9d;
+    }
+    
+    /* CONTACTO */
+    .contact-section {
+      padding: 5rem 2rem;
+      background: rgba(15, 15, 25, 0.7);
+      text-align: center;
+    }
+    
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      max-width: 900px;
+      margin: 3rem auto 0;
+    }
+    
+    .contact-item h4 {
+      color: #00ff9d;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .contact-item p {
+      color: #aaa;
+      line-height: 1.8;
+    }
+    
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(10, 10, 15, 0.9);
+      color: #888;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .subtitle { font-size: 1.3rem; }
+      nav ul { gap: 1rem; }
+      header { padding: 1rem; flex-direction: column; gap: 1rem; }
+      .hero { padding-top: 120px; }
+      .gallery img { max-width: 100%; }
+    }
+    
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+      .section-title { font-size: 2rem; }
+      .achievements-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVEGACIÓN -->
+  <header>
+    <a href="#" class="logo">teletext<span>.lab</span></a>
+    <nav>
+      <ul>
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#logros">Impacto</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <h1>Teletextlab</h1>
+    <p class="subtitle">Laboratorio de Innovación Digital</p>
+    <p class="tagline">Exploramos la intersección entre tecnología, diseño y comunicación experimental. Creamos experiencias digitales únicas que desafían los límites convencionales.</p>
+    <a href="#proyectos" class="cta-button">Explorar Proyectos</a>
+  </section>
+
+  <!-- LOGROS -->
+  <section class="achievements" id="logros">
+    <h2 class="section-title">Teletextlab en Cifras</h2>
+    <div class="achievements-grid">
+      <div class="achievement-card">
+        <div class="achievement-icon">🧪</div>
+        <div class="achievement-number">+18</div>
+        <h3 class="achievement-title">Experimentos Digitales</h3>
+        <p class="achievement-desc">Prototipos y proyectos únicos</p>
+      </div>
+      <div class="achievement-card">
+        <div class="achievement-icon">🌐</div>
+        <div class="achievement-number">+12</div>
+        <h3 class="achievement-title">Webs Experimentales</h3>
+        <p class="achievement-desc">Interfaces innovadoras</p>
+      </div>
+      <div class="achievement-card">
+        <div class="achievement-icon">🚀</div>
+        <div class="achievement-number">2023</div>
+        <h3 class="achievement-title">Año de Fundación</h3>
+        <p class="achievement-desc">Inicio del laboratorio</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section class="projects-section" id="proyectos">
+    <h2>Proyectos Experimentales</h2>
+    <p>Una selección de nuestros desarrollos más representativos en código creativo, web experimental e interfaces únicas.</p>
+
+    <!-- PROYECTO 1: RADIO DIGITAL -->
+    <section class="project-gallery">
+      <h2>Radio Digital Teletext</h2>
+      <p>Una plataforma de streaming que reinventa la experiencia de la radio fusionándola con la estética visual del teletexto clásico. Interfaz retro-futurista con visualizaciones en tiempo real.</p>
+      <div class="gallery">
+        <img src="assets/img/proyectos/radio-digital/01.png" alt="Interfaz principal Radio Digital Teletext" onclick="openModal(this)">
+        <img src="assets/img/proyectos/radio-digital/02.png" alt="Visualizador de espectro de audio" onclick="openModal(this)">
+        <img src="assets/img/proyectos/radio-digital/03.png" alt="Panel de control del stream" onclick="openModal(this)">
+      </div>
+    </section>
+
+    <!-- PROYECTO 2: WEB EXPERIMENTAL -->
+    <section class="project-gallery">
+      <h2>Web de Experiencia Inmersiva</h2>
+      <p>Sitio web narrativo que utiliza scroll parallax, animaciones CSS avanzadas y WebGL para contar historias de forma no lineal. Una experiencia de navegación cinematográfica.</p>
+      <div class="gallery">
+        <img src="assets/img/proyectos/web-exp/01.png" alt="Pantalla inicial experiencia inmersiva" onclick="openModal(this)">
+        <img src="assets/img/proyectos/web-exp/02.png" alt="Transición de sección con efectos" onclick="openModal(this)">
+        <img src="assets/img/proyectos/web-exp/03.png" alt="Detalle de animaciones interactivas" onclick="openModal(this)">
+      </div>
+    </section>
+
+    <!-- PROYECTO 3: CMS LAB -->
+    <section class="project-gallery">
+      <h2>CMS para Artistas Digitales</h2>
+      <p>Sistema de gestión de contenido personalizado diseñado específicamente para artistas digitales y creadores. Interfaz minimalista con herramientas de visualización únicas.</p>
+      <div class="gallery">
+        <img src="assets/img/proyectos/cms-lab/01.png" alt="Dashboard principal del CMS" onclick="openModal(this)">
+        <img src="assets/img/proyectos/cms-lab/02.png" alt="Editor visual de contenido" onclick="openModal(this)">
+        <img src="assets/img/proyectos/cms-lab/03.png" alt="Panel de gestión de galerías" onclick="openModal(this)">
+      </div>
+    </section>
+
+    <!-- PROYECTO 4: VIDEOJUEGOS -->
+    <section class="project-gallery">
+      <h2>Videojuego Experimental Web</h2>
+      <p>Juego narrativo basado en texto con elementos de aventura gráfica, desarrollado completamente para navegador. Combina storytelling con puzzles interactivos.</p>
+      <div class="gallery">
+        <img src="assets/img/proyectos/videojuegos/01.png" alt="Pantalla inicial del videojuego" onclick="openModal(this)">
+        <img src="assets/img/proyectos/videojuegos/02.png" alt="Escena de diálogo interactivo" onclick="openModal(this)">
+        <img src="assets/img/proyectos/videojuegos/03.png" alt="Puzzle de interfaz retro" onclick="openModal(this)">
+      </div>
+    </section>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contact-section" id="contacto">
+    <h2 class="section-title">Colaboremos</h2>
+    <p style="max-width: 600px; margin: 0 auto 2rem; color: #aaa;">¿Tienes una idea experimental o un proyecto digital que desafíe lo convencional? Hablemos para materializarlo.</p>
+    <div class="contact-info">
+      <div class="contact-item">
+        <h4>Base de Operaciones</h4>
+        <p>Laboratorio Digital<br>Espacio Virtual</p>
+      </div>
+      <div class="contact-item">
+        <h4>Horario de Contacto</h4>
+        <p>Lunes a Viernes<br>10:00 – 19:00 (GMT-3)</p>
+      </div>
+      <div class="contact-item">
+        <h4>Conexión Directa</h4>
+        <p>hola@teletextlab.dev<br>+54 9 11 2345-6789</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Teletextlab — Laboratorio de Innovación Digital. Todos los experimentos reservados.
+  </footer>
+
+  <!-- MODAL PARA IMÁGENES -->
+  <div id="imageModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center;">
+    <img id="modalImage" src="" alt="" style="max-width:90%; max-height:90%; border-radius:10px; border:2px solid rgba(0,255,157,0.3);">
+    <button onclick="closeModal()" style="position:absolute; top:20px; right:30px; background:none; border:none; color:#00ff9d; font-size:3rem; cursor:pointer; transition:color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#00ff9d'">×</button>
+  </div>
+
+  <script>
+    // Navegación suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Modal para imágenes
+    function openModal(img) {
+      document.getElementById('modalImage').src = img.src;
+      document.getElementById('modalImage').alt = img.alt;
+      document.getElementById('imageModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // Evita scroll
+    }
+    
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+      document.body.style.overflow = 'auto'; // Restaura scroll
+    }
+    
+    // Cerrar modal con ESC o haciendo clic fuera
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape') closeModal();
+    });
+    
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+      if(e.target === this) closeModal();
+    });
+  </script>
+</body>
+</html>
