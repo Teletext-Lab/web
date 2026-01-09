@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro | Teletextlab</title>
+    <style>
+        body { font-family: sans-serif; padding: 40px; max-width: 400px; margin: auto; }
+        input, button { width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box; }
+        button { background-color: #333; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Registro de Usuarios</h2>
+    <!-- Formulario de Registro -->
+    <form id="registroForm">
+        <input type="email" id="emailRegistro" placeholder="Correo electrónico" required>
+        <input type="password" id="claveRegistro" placeholder="Crear una clave" required>
+        <button type="submit">Crear cuenta</button>
+    </form>
+
+    <p>¿Ya tienes cuenta? <a href="login.html">Iniciar sesión</a></p>
+
+    <!-- Aquí se mostrará la lista de usuarios registrados -->
+    <div id="listaUsuarios"></div>
+
+    <script>
+        // Esta parte del código manejará la lógica.
+        // Para que sea funcional, necesitaremos un "backend".
+        // Este es solo el esqueleto inicial (frontend).
+        document.getElementById('registroForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que la página se recargue
+            alert('Para que el registro funcione, necesitas conectarlo a un servicio como Supabase o Firebase.');
+            // Aquí iría el código para enviar los datos a un servidor.
+        });
+    </script>
+</body>
+</html>
