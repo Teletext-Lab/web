@@ -1,35 +1,317 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Registro | Teletextlab</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Plataforma | Teletextlab</title>
+    
+    <!-- ESTILOS DE TU SITIO PRINCIPAL -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
     <style>
-        body { font-family: sans-serif; padding: 40px; max-width: 400px; margin: auto; }
-        input, button { width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box; }
-        button { background-color: #333; color: white; border: none; cursor: pointer; }
+        .dashboard-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .user-info {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .user-welcome h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        
+        .user-email {
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        
+        .btn-logout {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-logout:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .dashboard-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .material-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .material-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .material-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .material-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .material-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .btn-download {
+            display: inline-block;
+            background: #333;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .btn-download:hover {
+            background: #000;
+        }
+        
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #333;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
     </style>
 </head>
 <body>
-    <h2>Registro de Usuarios</h2>
-    <!-- Formulario de Registro -->
-    <form id="registroForm">
-        <input type="email" id="emailRegistro" placeholder="Correo electrónico" required>
-        <input type="password" id="claveRegistro" placeholder="Crear una clave" required>
-        <button type="submit">Crear cuenta</button>
-    </form>
-
-    <p>¿Ya tienes cuenta? <a href="login.html">Iniciar sesión</a></p>
-
-    <!-- Aquí se mostrará la lista de usuarios registrados -->
-    <div id="listaUsuarios"></div>
-
+    <!-- Pantalla de carga inicial -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="spinner"></div>
+    </div>
+    
+    <!-- Header del dashboard -->
+    <header class="dashboard-header">
+        <div class="user-info">
+            <div class="user-welcome">
+                <h1 id="userGreeting">Cargando...</h1>
+                <div class="user-email" id="userEmail">...</div>
+            </div>
+            <button class="btn-logout" id="logoutBtn">Cerrar Sesión</button>
+        </div>
+    </header>
+    
+    <!-- Contenido principal -->
+    <main class="dashboard-content">
+        <!-- Aviso de Drive -->
+        <div class="alert-warning">
+            <strong>📌 Nota:</strong> Los archivos están alojados en Google Drive. Al hacer clic en los enlaces, serás redirigido allí.
+        </div>
+        
+        <!-- Sección de Documentación -->
+        <h2 class="section-title">📚 Documentación</h2>
+        <div class="materials-grid">
+            <div class="material-card">
+                <div class="material-icon">📘</div>
+                <h3 class="material-title">Manual de Usuario</h3>
+                <p class="material-desc">Guía completa con todos los procesos y funciones del sistema.</p>
+                <a href="https://drive.google.com/.../manual.pdf" target="_blank" class="btn-download">Descargar PDF</a>
+            </div>
+            
+            <div class="material-card">
+                <div class="material-icon">📖</div>
+                <h3 class="material-title">Protocolos de Trabajo</h3>
+                <p class="material-desc">Procedimientos estándar y mejores prácticas del equipo.</p>
+                <a href="https://drive.google.com/.../protocolos.pdf" target="_blank" class="btn-download">Ver Documento</a>
+            </div>
+            
+            <div class="material-card">
+                <div class="material-icon">❓</div>
+                <h3 class="material-title">Preguntas Frecuentes</h3>
+                <p class="material-desc">Respuestas a las dudas más comunes de los usuarios.</p>
+                <a href="https://drive.google.com/.../faq.pdf" target="_blank" class="btn-download">Consultar FAQ</a>
+            </div>
+        </div>
+        
+        <!-- Sección de Tutoriales -->
+        <h2 class="section-title">🎬 Video Tutoriales</h2>
+        <div class="materials-grid">
+            <div class="material-card">
+                <div class="material-icon">🎥</div>
+                <h3 class="material-title">Introducción Básica</h3>
+                <p class="material-desc">Primeros pasos en la plataforma (15 minutos).</p>
+                <a href="https://drive.google.com/.../tutorial1.mp4" target="_blank" class="btn-download">Ver Video</a>
+            </div>
+            
+            <div class="material-card">
+                <div class="material-icon">🎬</div>
+                <h3 class="material-title">Funciones Avanzadas</h3>
+                <p class="material-desc">Uso experto de todas las herramientas (25 minutos).</p>
+                <a href="https://drive.google.com/.../tutorial2.mp4" target="_blank" class="btn-download">Ver Video</a>
+            </div>
+            
+            <div class="material-card">
+                <div class="material-icon">🔧</div>
+                <h3 class="material-title">Solución de Problemas</h3>
+                <p class="material-desc">Cómo resolver errores comunes (20 minutos).</p>
+                <a href="https://drive.google.com/.../tutorial3.mp4" target="_blank" class="btn-download">Ver Video</a>
+            </div>
+        </div>
+        
+        <!-- Sección de Recursos -->
+        <h2 class="section-title">🛠️ Recursos Descargables</h2>
+        <div class="materials-grid">
+            <div class="material-card">
+                <div class="material-icon">📁</div>
+                <h3 class="material-title">Plantillas Base</h3>
+                <p class="material-desc">Archivos base para empezar nuevos proyectos.</p>
+                <a href="https://drive.google.com/.../plantillas.zip" target="_blank" class="btn-download">Descargar ZIP</a>
+            </div>
+            
+            <div class="material-card">
+                <div class="material-icon">📊</div>
+                <h3 class="material-title">Reportes Semanales</h3>
+                <p class="material-desc">Formatos para reportes y seguimiento.</p>
+                <a href="https://drive.google.com/.../reportes.xlsx" target="_blank" class="btn-download">Descargar Excel</a>
+            </div>
+            
+            <div class="material-card">
+                <div class="material-icon">📋</div>
+                <h3 class="material-title">Checklist Diario</h3>
+                <p class="material-desc">Lista de tareas para el control diario.</p>
+                <a href="https://drive.google.com/.../checklist.pdf" target="_blank" class="btn-download">Descargar PDF</a>
+            </div>
+        </div>
+        
+        <!-- Enlaces rápidos -->
+        <h2 class="section-title">⚡ Enlaces Rápidos</h2>
+        <div class="materials-grid">
+            <div class="material-card">
+                <div class="material-icon">📋</div>
+                <h3 class="material-title">Tablero de Tareas</h3>
+                <p class="material-desc">Acceso directo al Trello/Kanban del equipo.</p>
+                <a href="https://trello.com/b/..." target="_blank" class="btn-download">Ir al Tablero</a>
+            </div>
+            
+            <div class="material-card">
+                <div class="material-icon">📅</div>
+                <h3 class="material-title">Calendario Compartido</h3>
+                <p class="material-desc">Eventos, reuniones y fechas importantes.</p>
+                <a href="https://calendar.google.com/..." target="_blank" class="btn-download">Ver Calendario</a>
+            </div>
+            
+            <div class="material-card">
+                <div class="material-icon">💬</div>
+                <h3 class="material-title">Chat del Equipo</h3>
+                <p class="material-desc">Acceso al Slack/WhatsApp del grupo.</p>
+                <a href="https://slack.com/..." target="_blank" class="btn-download">Unirse al Chat</a>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+    
     <script>
-        // Esta parte del código manejará la lógica.
-        // Para que sea funcional, necesitaremos un "backend".
-        // Este es solo el esqueleto inicial (frontend).
-        document.getElementById('registroForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita que la página se recargue
-            alert('Para que el registro funcione, necesitas conectarlo a un servicio como Supabase o Firebase.');
-            // Aquí iría el código para enviar los datos a un servidor.
+        // Esperar a que cargue la página
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Verificar si está logueado
+            const isLoggedIn = await window.auth.isLoggedIn();
+            
+            if (!isLoggedIn) {
+                // Si no está logueado, redirigir al login
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            // Obtener usuario actual
+            const user = await window.auth.getCurrentUser();
+            
+            if (user) {
+                // Mostrar información del usuario
+                document.getElementById('userGreeting').textContent = 
+                    `¡Bienvenido, ${user.email ? user.email.split('@')[0] : 'Usuario'}!`;
+                document.getElementById('userEmail').textContent = user.email;
+            }
+            
+            // Ocultar pantalla de carga
+            document.getElementById('loadingScreen').style.display = 'none';
+            
+            // Configurar botón de logout
+            document.getElementById('logoutBtn').addEventListener('click', async function() {
+                await window.auth.logout();
+                window.location.href = 'index.html';
+            });
+            
+            // Reemplaza estos enlaces con los tuyos de Google Drive
+            const links = document.querySelectorAll('a[href*="drive.google.com"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Aquí puedes agregar tracking si lo necesitas
+                    console.log('Accediendo a:', this.href);
+                });
+            });
         });
     </script>
 </body>
