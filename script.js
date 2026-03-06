@@ -23,6 +23,15 @@ behavior:'smooth'
 
 
 /* MODAL */
+function setLang(lang){
+
+document.querySelectorAll("[data-es]").forEach(el=>{
+
+el.innerText = el.dataset[lang]
+
+})
+
+}
 
 function openModal(img){
 
