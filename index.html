@@ -71,6 +71,22 @@ nav a:hover{
 color:#00ff9d;
 }
 
+/* BOTONES */
+
+.controls{
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+.lang-btn{
+background:none;
+border:none;
+color:#00ff9d;
+cursor:pointer;
+font-size:0.9rem;
+}
+
 /* BOTON TEMA */
 
 .theme-toggle{
@@ -133,7 +149,6 @@ font-size:1.1rem;
 
 .section{
 padding:5rem 2rem;
-background:rgba(20,20,30,0.3);
 }
 
 .section-title{
@@ -157,15 +172,32 @@ padding:2rem;
 text-align:center;
 }
 
-.card h3{
-margin-bottom:1rem;
+/* LOGROS */
+
+.achievements{
+padding:5rem 2rem;
+background:rgba(20,20,30,0.3);
 }
 
-.card a{
-display:inline-block;
-margin-top:15px;
+.achievements-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:2rem;
+max-width:1100px;
+margin:0 auto;
+}
+
+.achievement-card{
+background:rgba(30,30,40,0.7);
+border-radius:15px;
+padding:2.5rem;
+text-align:center;
+}
+
+.achievement-number{
+font-size:3rem;
+font-weight:800;
 color:#00ff9d;
-text-decoration:none;
 }
 
 /* CONTACTO */
@@ -214,30 +246,6 @@ max-height:90%;
 border-radius:10px;
 }
 
-/* WHATSAPP */
-
-.whatsapp-btn{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#00ff9d;
-color:#000;
-font-size:1.6rem;
-width:55px;
-height:55px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
-text-decoration:none;
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-z-index:1500;
-}
-
-.whatsapp-btn:hover{
-transform:scale(1.08);
-}
-
 /* MODO CLARO */
 
 body.light-mode{
@@ -254,6 +262,10 @@ color:#333;
 }
 
 body.light-mode .card{
+background:#ffffff;
+}
+
+body.light-mode .achievement-card{
 background:#ffffff;
 }
 
@@ -277,14 +289,18 @@ color:#333;
 
 <nav>
 <ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#servicios">Servicios</a></li>
-<li><a href="#proyectos">Proyectos</a></li>
-<li><a href="#contacto">Contacto</a></li>
+<li><a href="#home" data-es="Inicio" data-en="Home">Inicio</a></li>
+<li><a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a></li>
+<li><a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
+<li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
 </ul>
 </nav>
 
+<div class="controls">
+<button class="lang-btn" onclick="setLang('es')">ES</button>
+<button class="lang-btn" onclick="setLang('en')">EN</button>
 <button id="themeToggle" class="theme-toggle">🌙</button>
+</div>
 
 </header>
 
@@ -292,15 +308,21 @@ color:#333;
 
 <h1>Textlab</h1>
 
-<p class="subtitle">
+<p class="subtitle"
+data-es="Laboratorio de Soluciones Digitales"
+data-en="Digital Solutions Lab">
 Laboratorio de Soluciones Digitales
 </p>
 
-<p class="tagline">
+<p class="tagline"
+data-es="Exploramos la intersección entre tecnología, diseño y comunicación experimental."
+data-en="Exploring the intersection of technology, design and experimental communication.">
 Exploramos la intersección entre tecnología, diseño y comunicación experimental.
 </p>
 
-<a href="#proyectos" class="cta-button">
+<a href="#proyectos" class="cta-button"
+data-es="Explorar Proyectos"
+data-en="Explore Projects">
 Explorar Proyectos
 </a>
 
@@ -308,33 +330,44 @@ Explorar Proyectos
 
 <section class="section" id="servicios">
 
-<h2 class="section-title">Servicios</h2>
+<h2 class="section-title"
+data-es="Servicios"
+data-en="Services">
+Servicios
+</h2>
 
 <div class="grid">
 
 <div class="card">
-<h3>Desarrollo Web</h3>
-<p>Creación de sitios web modernos.</p>
+<h3 data-es="Desarrollo Web" data-en="Web Development">Desarrollo Web</h3>
+<p data-es="Sitios web, WordPress y landing pages."
+data-en="Websites, WordPress and landing pages.">
+Sitios web, WordPress y landing pages.
+</p>
 </div>
 
 <div class="card">
-<h3>SaaS a Medida</h3>
-<p>Desarrollo de software web personalizado.</p>
+<h3 data-es="Software a Medida" data-en="Custom Software">Software a Medida</h3>
+<p data-es="Desarrollo de SaaS y sistemas personalizados."
+data-en="Custom SaaS and web platforms.">
+Desarrollo de SaaS y sistemas personalizados.
+</p>
 </div>
 
 <div class="card">
-<h3>Soporte Técnico</h3>
-<p>Mantenimiento tecnológico para oficinas y negocios.</p>
+<h3 data-es="Soporte Tecnológico" data-en="Tech Support">Soporte Tecnológico</h3>
+<p data-es="Instalación, mantenimiento y redes para oficinas y negocios."
+data-en="Installation, maintenance and networks.">
+Instalación, mantenimiento y redes para oficinas y negocios.
+</p>
 </div>
 
 <div class="card">
-<h3>Streaming</h3>
-<p>Configuración técnica para radios y streams.</p>
-</div>
-
-<div class="card">
-<h3>Diseño</h3>
-<p>Diseño gráfico y diseño web.</p>
+<h3 data-es="Streaming y Producción" data-en="Streaming Setup">Streaming y Producción</h3>
+<p data-es="Configuración de streaming y contenido digital."
+data-en="Streaming configuration and digital production.">
+Configuración de streaming y contenido digital.
+</p>
 </div>
 
 </div>
@@ -343,36 +376,65 @@ Explorar Proyectos
 
 <section class="section" id="proyectos">
 
-<h2 class="section-title">Proyectos</h2>
+<h2 class="section-title"
+data-es="Proyectos"
+data-en="Projects">
+Proyectos
+</h2>
 
 <div class="grid">
 
 <div class="card">
-<h3>TXTRadio</h3>
-<p>Radio experimental online.</p>
-<a href="https://www.txtradio.site/" target="_blank">Ver proyecto</a>
+<h3>Portfolio Fotografía</h3>
+<p>Website</p>
 </div>
 
 <div class="card">
-<h3>Cineclub</h3>
-<p>Archivo audiovisual online.</p>
-<a href="https://abtxt.github.io/cineclub/" target="_blank">Ver proyecto</a>
+<h3>Sistema para Kiosco</h3>
+<p>SaaS</p>
 </div>
 
 <div class="card">
-<h3>Fanzinoteca</h3>
-<p>Archivo digital de fanzines.</p>
-<a href="https://github.com/labtxt/fanzinoteca" target="_blank">Ver proyecto</a>
+<h3>Landing Comercial</h3>
+<p>Website</p>
 </div>
 
 </div>
 
 </section>
 
-<section class="contact-section" id="contacto">
+<section class="achievements" id="logros">
 
 <h2 class="section-title">
-Contacto
+Teletextlab en Cifras
+</h2>
+
+<div class="achievements-grid">
+
+<div class="achievement-card">
+<div class="achievement-number">+18</div>
+<h3>Experimentos Digitales</h3>
+</div>
+
+<div class="achievement-card">
+<div class="achievement-number">+12</div>
+<h3>Webs Experimentales</h3>
+</div>
+
+<div class="achievement-card">
+<div class="achievement-number">2023</div>
+<h3>Año de Fundación</h3>
+</div>
+
+</div>
+</section>
+
+<section class="contact-section" id="contacto">
+
+<h2 class="section-title"
+data-es="Colaboremos"
+data-en="Let's Collaborate">
+Colaboremos
 </h2>
 
 <div class="contact-info">
@@ -383,12 +445,14 @@ Contacto
 </div>
 
 <div>
-<h4>Horario</h4>
-<p>Lunes a Viernes</p>
+<h4 data-es="Horario" data-en="Schedule">Horario</h4>
+<p data-es="Lunes a Viernes" data-en="Monday to Friday">
+Lunes a Viernes
+</p>
 </div>
 
 <div>
-<h4>Base</h4>
+<h4 data-es="Base" data-en="Location">Base</h4>
 <p>Laboratorio Digital</p>
 </div>
 
@@ -402,9 +466,19 @@ Contacto
 
 </footer>
 
-<a href="https://wa.me/5492920000000" class="whatsapp-btn" target="_blank">💬</a>
-
 <script>
+
+/* IDIOMA */
+
+function setLang(lang){
+
+document.querySelectorAll("[data-es]").forEach(el=>{
+
+el.textContent=el.getAttribute("data-"+lang)
+
+})
+
+}
 
 /* SCROLL SUAVE */
 
@@ -438,7 +512,6 @@ const themeBtn=document.getElementById("themeToggle");
 if(localStorage.getItem("theme")==="light"){
 
 document.body.classList.add("light-mode");
-
 themeBtn.textContent="☀️";
 
 }
@@ -450,13 +523,11 @@ document.body.classList.toggle("light-mode");
 if(document.body.classList.contains("light-mode")){
 
 themeBtn.textContent="☀️";
-
 localStorage.setItem("theme","light");
 
 }else{
 
 themeBtn.textContent="🌙";
-
 localStorage.setItem("theme","dark");
 
 }
