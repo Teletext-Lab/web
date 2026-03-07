@@ -1,17 +1,16 @@
-let currentLang = "es"
+let lang="es"
 
-document.getElementById("toggleLang").onclick = () => {
+document.getElementById("toggleLang").onclick=function(){
 
-currentLang = currentLang === "es" ? "en" : "es"
+lang = lang === "es" ? "en" : "es"
 
-document.querySelectorAll("[data-es]").forEach(el => {
-el.textContent = el.getAttribute("data-" + currentLang)
+document.querySelectorAll("[data-es]").forEach(el=>{
+el.textContent = el.getAttribute("data-"+lang)
 })
 
 }
 
-
-document.getElementById("toggleDark").onclick = () => {
+document.getElementById("toggleDark").onclick=function(){
 
 document.body.classList.toggle("dark")
 
