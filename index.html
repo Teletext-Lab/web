@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Textlab</title>
 
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2285%22 font-weight=%22bold%22 font-family=%22monospace%22 fill=%22%2300ff9d%22>T</text></svg>">
+
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-font-family:Arial, Helvetica, sans-serif;
+font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
 background:#0a0a0a;
 color:#f0f0f0;
 line-height:1.6;
+overflow-x:hidden;
 transition:background .3s,color .3s;
 }
 
@@ -28,42 +25,45 @@ header{
 position:fixed;
 top:0;
 width:100%;
-background:#0a0a0a;
-padding:20px;
+background:rgba(10,10,10,0.95);
+backdrop-filter:blur(10px);
+padding:1.5rem 2rem;
 display:flex;
 justify-content:space-between;
 align-items:center;
 z-index:1000;
+border-bottom:1px solid rgba(0,255,157,0.1);
 }
 
 .logo{
-font-size:1.6rem;
-font-weight:bold;
+font-size:1.8rem;
+font-weight:700;
 color:#00ff9d;
 text-decoration:none;
 }
 
+.logo span{color:#fff;}
+
 nav ul{
 display:flex;
 list-style:none;
-gap:20px;
+gap:2rem;
 }
 
 nav a{
 color:#ccc;
 text-decoration:none;
+font-weight:500;
 }
 
-nav a:hover{
-color:#00ff9d;
-}
+nav a:hover{color:#00ff9d;}
 
 .lang button{
 background:none;
 border:none;
 color:#00ff9d;
 cursor:pointer;
-margin-left:8px;
+margin-left:10px;
 }
 
 .theme-toggle{
@@ -82,136 +82,160 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
+padding:0 2rem;
 padding-top:80px;
+max-width:900px;
+margin:0 auto;
 }
 
 .hero h1{
-font-size:3rem;
-margin-bottom:10px;
+font-size:3.5rem;
+background:linear-gradient(90deg,#fff,#00ff9d);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:1rem;
 }
 
 .subtitle{
 color:#00ff9d;
-margin-bottom:15px;
+font-size:1.5rem;
+font-weight:600;
+margin-bottom:1.5rem;
 }
 
 .tagline{
-max-width:600px;
+font-size:1.2rem;
 color:#aaa;
-margin-bottom:30px;
+max-width:600px;
+margin-bottom:3rem;
+}
+
+.cta-button{
+display:inline-block;
+background:#00ff9d;
+color:#000;
+padding:1rem 2.5rem;
+border-radius:50px;
+text-decoration:none;
+font-weight:700;
 }
 
 .section{
-padding:80px 20px;
+padding:5rem 2rem;
+background:rgba(20,20,30,0.3);
 }
 
 .section-title{
 text-align:center;
-font-size:2rem;
-margin-bottom:40px;
+font-size:2.5rem;
+margin-bottom:3rem;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-max-width:1000px;
-margin:auto;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:2rem;
+max-width:1100px;
+margin:0 auto;
 }
 
 .card{
-background:#1a1a1a;
-padding:25px;
-border-radius:10px;
+background:rgba(30,30,40,0.7);
+border-radius:15px;
+padding:2rem;
 text-align:center;
 }
 
-.card a{
-color:#00ff9d;
-text-decoration:none;
+.contact-section{
+padding:5rem 2rem;
+background:rgba(15,15,25,0.7);
+text-align:center;
 }
 
-.contact{
-text-align:center;
+.contact-info{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:3rem;
+max-width:900px;
+margin:3rem auto 0;
 }
 
 footer{
 text-align:center;
-padding:30px;
-background:#111;
+padding:2rem;
+background:rgba(10,10,15,0.9);
 color:#888;
 }
 
-.whatsapp{
+.whatsapp-btn{
 position:fixed;
-bottom:20px;
-right:20px;
+bottom:25px;
+right:25px;
 background:#00ff9d;
 color:#000;
+font-size:1.6rem;
 width:55px;
 height:55px;
-border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:24px;
+border-radius:50%;
 text-decoration:none;
+}
+
+input,textarea{
+width:100%;
+padding:12px;
+margin-bottom:12px;
+border:none;
+border-radius:6px;
+}
+
+button.form-btn{
+background:#00ff9d;
+color:#000;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+font-weight:700;
+cursor:pointer;
 }
 
 /* LIGHT MODE */
 
-body.light{
+body.light-mode{
 background:#f5f5f5;
 color:#111;
 }
 
-body.light header{
-background:#ffffff;
-}
-
-body.light nav a{
-color:#333;
-}
-
-body.light .card{
-background:#ffffff;
-}
-
-body.light footer{
-background:#eaeaea;
-color:#333;
-}
+body.light-mode header{background:#ffffff;}
+body.light-mode nav a{color:#333;}
+body.light-mode .card{background:#ffffff;}
+body.light-mode .section{background:#eeeeee;}
+body.light-mode footer{background:#eaeaea;color:#333;}
 
 </style>
-
 </head>
 
 <body>
 
 <header>
 
-<a class="logo">Textlab</a>
+<a href="#" class="logo">text<span>.lab</span></a>
 
 <nav>
 <ul>
-
 <li><a href="#home">Home</a></li>
 <li><a href="#servicios">Servicios</a></li>
 <li><a href="#proyectos">Proyectos</a></li>
 <li><a href="#contacto">Contacto</a></li>
-
 </ul>
 </nav>
 
-<div>
-
-<span class="lang">
+<div class="lang">
 <button onclick="setLang('es')">ES</button>
 <button onclick="setLang('en')">EN</button>
-</span>
-
-<button id="toggleTheme" class="theme-toggle">🌙</button>
-
+<button id="themeToggle" class="theme-toggle">🌙</button>
 </div>
 
 </header>
@@ -232,6 +256,8 @@ data-en="Web development and digital solutions for entrepreneurs and businesses.
 Desarrollo Web y Soluciones Digitales para emprendedores y negocios.
 </p>
 
+<a href="#servicios" class="cta-button">Servicios</a>
+
 </section>
 
 <section class="section" id="servicios">
@@ -240,19 +266,19 @@ Desarrollo Web y Soluciones Digitales para emprendedores y negocios.
 
 <div class="grid">
 
-<div class="card">Landing Page</div>
-<div class="card">Web simple</div>
-<div class="card">Tienda online</div>
-<div class="card">Soporte técnico</div>
-<div class="card">Configuración e-commerce</div>
-<div class="card">WordPress</div>
-<div class="card">Asistencia tecnológica</div>
+<div class="card"><h3>Landing Page</h3></div>
+<div class="card"><h3>Web Simple</h3></div>
+<div class="card"><h3>Tienda Online</h3></div>
+<div class="card"><h3>WordPress</h3></div>
+<div class="card"><h3>Configuración E-commerce</h3></div>
+<div class="card"><h3>Soporte Técnico</h3></div>
+<div class="card"><h3>Asistencia Tecnológica</h3></div>
 
 </div>
 
 </section>
 
-<section class="section">
+<section class="section" id="proceso">
 
 <h2 class="section-title">Cómo trabajamos</h2>
 
@@ -260,17 +286,17 @@ Desarrollo Web y Soluciones Digitales para emprendedores y negocios.
 
 <div class="card">
 <h3>1</h3>
-<p>Escuchamos tu idea</p>
+<p>Analizamos tu proyecto.</p>
 </div>
 
 <div class="card">
 <h3>2</h3>
-<p>Desarrollamos la solución</p>
+<p>Desarrollamos la solución.</p>
 </div>
 
 <div class="card">
 <h3>3</h3>
-<p>Lanzamos tu proyecto</p>
+<p>Lanzamos tu proyecto.</p>
 </div>
 
 </div>
@@ -285,65 +311,119 @@ Desarrollo Web y Soluciones Digitales para emprendedores y negocios.
 
 <div class="card">
 <h3>TXTRadio</h3>
-<a href="https://www.txtradio.site/" target="_blank">Ver</a>
+<a href="https://www.txtradio.site/" target="_blank">Ver proyecto</a>
 </div>
 
 <div class="card">
 <h3>Cineclub</h3>
-<a href="https://abtxt.github.io/cineclub/" target="_blank">Ver</a>
+<a href="https://abtxt.github.io/cineclub/" target="_blank">Ver proyecto</a>
 </div>
 
 <div class="card">
 <h3>Fanzinoteca</h3>
-<a href="https://github.com/labtxt/fanzinoteca" target="_blank">Ver</a>
+<a href="https://github.com/labtxt/fanzinoteca" target="_blank">Ver proyecto</a>
 </div>
 
 </div>
 
 </section>
 
-<section class="section contact" id="contacto">
+<section class="contact-section" id="contacto">
 
 <h2 class="section-title">Contacto</h2>
 
-<p>📱 2920 27-6985</p>
-<p>✉️ emilianoimit@gmail.com</p>
+<div class="contact-info">
+
+<div>
+<h4>Email</h4>
+<p>emilianoimit@gmail.com</p>
+</div>
+
+<div>
+<h4>Celular</h4>
+<p>2920 27-6985</p>
+</div>
+
+<div>
+<h4>Base</h4>
+<p>Argentina</p>
+</div>
+
+</div>
+
+<div style="max-width:700px;margin:40px auto 0;">
+
+<form action="https://formspree.io/f/mvgpbdyr" method="POST">
+
+<input type="text" name="nombre" placeholder="Nombre" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="mensaje" placeholder="Mensaje" required></textarea>
+
+<button class="form-btn" type="submit">
+Enviar mensaje
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">Newsletter</h2>
+
+<div style="max-width:600px;margin:0 auto;text-align:center;">
+
+<p style="margin-bottom:25px;color:#aaa;">
+Recibí noticias sobre proyectos y novedades de Textlab.
+</p>
+
+<form action="https://formspree.io/f/mvgpbdyr" method="POST">
+
+<input type="email" name="email" placeholder="Tu email" required>
+
+<button class="form-btn" type="submit">
+Suscribirme
+</button>
+
+</form>
+
+</div>
 
 </section>
 
 <footer>
-© 2026 Textlab
+© 2026 Textlab — Desarrollo Web & Soluciones Digitales
 </footer>
 
-<a href="https://wa.me/5492920276985" class="whatsapp">💬</a>
+<a href="https://wa.me/5492920276985" class="whatsapp-btn" target="_blank">💬</a>
 
 <script>
 
 function setLang(lang){
-
 document.querySelectorAll("[data-es]").forEach(el=>{
 el.textContent=el.getAttribute("data-"+lang)
 })
-
 }
 
-const btn=document.getElementById("toggleTheme")
+const themeBtn=document.getElementById("themeToggle")
 
 if(localStorage.getItem("theme")==="light"){
-document.body.classList.add("light")
-btn.textContent="☀️"
+document.body.classList.add("light-mode")
+themeBtn.textContent="☀️"
 }
 
-btn.onclick=function(){
+themeBtn.onclick=function(){
 
-document.body.classList.toggle("light")
+document.body.classList.toggle("light-mode")
 
-if(document.body.classList.contains("light")){
+if(document.body.classList.contains("light-mode")){
 localStorage.setItem("theme","light")
-btn.textContent="☀️"
+themeBtn.textContent="☀️"
 }else{
 localStorage.setItem("theme","dark")
-btn.textContent="🌙"
+themeBtn.textContent="🌙"
 }
 
 }
