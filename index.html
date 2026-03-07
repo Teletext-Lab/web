@@ -1,201 +1,45 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 
-<title>Textlab</title>
+anchor.addEventListener('click',function(e){
 
-<link rel="stylesheet" href="styles.css">
+e.preventDefault()
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2285%22 font-weight=%22bold%22 font-family=%22monospace%22 fill=%22%2300ff9d%22>T</text></svg>">
+const target=document.querySelector(this.getAttribute('href'))
 
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://teletextlab.github.io/">
-<meta property="og:title" content="Textlab - Laboratorio de Soluciones Digitales">
-<meta property="og:description" content="Exploramos la intersección entre tecnología, diseño y comunicación experimental.">
-<meta property="og:image" content="https://raw.githubusercontent.com/teletextlab/portfolio/main/social-preview.jpg">
+if(target){
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Teletextlab - Laboratorio de Innovación Digital">
-<meta name="twitter:description" content="Exploramos la intersección entre tecnología, diseño y comunicación experimental.">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/teletextlab/portfolio/main/social-preview.jpg">
+window.scrollTo({
+top:target.offsetTop-80,
+behavior:'smooth'
+})
 
-<meta name="description" content="Teletextlab es un laboratorio de innovación digital especializado en desarrollo web experimental.">
+}
 
-</head>
+})
 
-<body>
+})
 
-<header>
-<a href="#" class="logo">text<span>.lab</span></a>
 
-<nav>
-<ul>
-<li><a href="#home">Inicio</a></li>
-<li><a href="#logros">Impacto</a></li>
-<li><a href="#proyectos">Proyectos</a></li>
-<li><a href="#contacto">Contacto</a></li>
-</ul>
-</nav>
-</header>
+function openModal(img){
 
+document.getElementById("modalImage").src=img.src
 
-<section class="hero" id="home">
+document.getElementById("imageModal").style.display="flex"
 
-<h1>Textlab</h1>
+document.body.style.overflow="hidden"
 
-<p class="subtitle">
-Laboratorio de Soluciones Digitales
-</p>
+}
 
-<p class="tagline">
-Exploramos la intersección entre tecnología, diseño y comunicación experimental.
-</p>
 
-<a href="#proyectos" class="cta-button">
-Explorar Proyectos
-</a>
+function closeModal(){
 
-</section>
+document.getElementById("imageModal").style.display="none"
 
+document.body.style.overflow="auto"
 
-<section class="achievements" id="logros">
+}
 
-<h2 class="section-title">
-Teletextlab en Cifras
-</h2>
 
-<div class="achievements-grid">
-
-<div class="achievement-card">
-
-<div class="achievement-icon">🧪</div>
-
-<div class="achievement-number">+18</div>
-
-<h3 class="achievement-title">
-Experimentos Digitales
-</h3>
-
-<p class="achievement-desc">
-Prototipos y proyectos únicos
-</p>
-
-</div>
-
-<div class="achievement-card">
-
-<div class="achievement-icon">🌐</div>
-
-<div class="achievement-number">+12</div>
-
-<h3 class="achievement-title">
-Webs Experimentales
-</h3>
-
-<p class="achievement-desc">
-Interfaces innovadoras
-</p>
-
-</div>
-
-<div class="achievement-card">
-
-<div class="achievement-icon">🚀</div>
-
-<div class="achievement-number">2023</div>
-
-<h3 class="achievement-title">
-Año de Fundación
-</h3>
-
-<p class="achievement-desc">
-Inicio del laboratorio
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="projects-section" id="proyectos">
-
-<h2>
-Proyectos Experimentales
-</h2>
-
-<p>
-Una selección de nuestros desarrollos más representativos.
-</p>
-
-
-<section class="project-gallery">
-
-<h2>Teletext Radio</h2>
-
-<div class="gallery">
-
-<img src="assets/img/proyectos/radio-digital/01.png" onclick="openModal(this)">
-
-<img src="assets/img/proyectos/radio-digital/02.png" onclick="openModal(this)">
-
-<img src="assets/img/proyectos/radio-digital/03.png" onclick="openModal(this)">
-
-</div>
-
-</section>
-
-
-</section>
-
-
-<section class="contact-section" id="contacto">
-
-<h2 class="section-title">
-Colaboremos
-</h2>
-
-<div class="contact-info">
-
-<div class="contact-item">
-<h4>Base de Operaciones</h4>
-<p>Laboratorio Digital</p>
-</div>
-
-<div class="contact-item">
-<h4>Horario</h4>
-<p>Lunes a Viernes</p>
-</div>
-
-<div class="contact-item">
-<h4>Contacto</h4>
-<p>hola@teletextlab.dev</p>
-</div>
-
-</div>
-
-</section>
-
-
-<footer>
-
-© 2026 Textlab
-
-</footer>
-
-
-<div id="imageModal">
-
-<img id="modalImage">
-
-<button onclick="closeModal()">×</button>
-
-</div>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape")closeModal()
+})
