@@ -1,25 +1,34 @@
-*{margin:0;padding:0;box-sizing:border-box}
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
 body{
-font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 background:#0a0a0a;
 color:#f0f0f0;
 line-height:1.6;
 overflow-x:hidden;
+transition:background 0.3s,color 0.3s;
 }
+
+/* HEADER */
 
 header{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(10,10,10,.95);
+background:rgba(10,10,10,0.95);
 backdrop-filter:blur(10px);
 padding:1.5rem 2rem;
 display:flex;
 justify-content:space-between;
 align-items:center;
 z-index:1000;
-border-bottom:1px solid rgba(0,255,157,.1);
+border-bottom:1px solid rgba(0,255,157,0.1);
 }
 
 .logo{
@@ -29,7 +38,9 @@ color:#00ff9d;
 text-decoration:none;
 }
 
-.logo span{color:#fff}
+.logo span{
+color:#fff;
+}
 
 nav ul{
 display:flex;
@@ -41,12 +52,24 @@ nav a{
 color:#ccc;
 text-decoration:none;
 font-weight:500;
-transition:.3s;
+transition:color 0.3s;
 }
 
 nav a:hover{
 color:#00ff9d;
 }
+
+/* BOTON TEMA */
+
+.theme-toggle{
+background:none;
+border:none;
+font-size:1.4rem;
+cursor:pointer;
+color:#00ff9d;
+}
+
+/* HERO */
 
 .hero{
 min-height:100vh;
@@ -58,7 +81,7 @@ text-align:center;
 padding:0 2rem;
 padding-top:80px;
 max-width:900px;
-margin:auto;
+margin:0 auto;
 }
 
 .hero h1{
@@ -91,28 +114,142 @@ padding:1rem 2.5rem;
 border-radius:50px;
 text-decoration:none;
 font-weight:700;
+font-size:1.1rem;
 }
 
-.gallery{
-display:flex;
-justify-content:center;
-gap:1.5rem;
-flex-wrap:wrap;
+/* SECCIONES */
+
+.section{
+padding:5rem 2rem;
+background:rgba(20,20,30,0.3);
 }
 
-.gallery img{
-width:100%;
-max-width:300px;
-height:200px;
-object-fit:cover;
-border-radius:10px;
-border:2px solid rgba(255,255,255,.1);
-cursor:pointer;
+.section-title{
+text-align:center;
+font-size:2.5rem;
+margin-bottom:3rem;
 }
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:2rem;
+max-width:1100px;
+margin:0 auto;
+}
+
+.card{
+background:rgba(30,30,40,0.7);
+border-radius:15px;
+padding:2rem;
+text-align:center;
+}
+
+.card h3{
+margin-bottom:1rem;
+}
+
+.card a{
+display:inline-block;
+margin-top:15px;
+color:#00ff9d;
+text-decoration:none;
+}
+
+/* CONTACTO */
+
+.contact-section{
+padding:5rem 2rem;
+background:rgba(15,15,25,0.7);
+text-align:center;
+}
+
+.contact-info{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:3rem;
+max-width:900px;
+margin:3rem auto 0;
+}
+
+/* FOOTER */
 
 footer{
 text-align:center;
 padding:2rem;
-background:rgba(10,10,15,.9);
+background:rgba(10,10,15,0.9);
 color:#888;
+}
+
+/* MODAL */
+
+#imageModal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+z-index:2000;
+justify-content:center;
+align-items:center;
+}
+
+#imageModal img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+/* WHATSAPP */
+
+.whatsapp-btn{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#00ff9d;
+color:#000;
+font-size:1.6rem;
+width:55px;
+height:55px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+text-decoration:none;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+z-index:1500;
+}
+
+.whatsapp-btn:hover{
+transform:scale(1.08);
+}
+
+/* MODO CLARO */
+
+body.light-mode{
+background:#f5f5f5;
+color:#111;
+}
+
+body.light-mode header{
+background:#ffffff;
+}
+
+body.light-mode nav a{
+color:#333;
+}
+
+body.light-mode .card{
+background:#ffffff;
+}
+
+body.light-mode .contact-section{
+background:#eeeeee;
+}
+
+body.light-mode footer{
+background:#eaeaea;
+color:#333;
 }
