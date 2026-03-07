@@ -1,7 +1,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-font-family:'Segoe UI',Tahoma;
+font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
 background:#0a0a0a;
 color:#f0f0f0;
 line-height:1.6;
@@ -12,14 +12,14 @@ header{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(10,10,10,0.95);
+background:rgba(10,10,10,.95);
 backdrop-filter:blur(10px);
 padding:1.5rem 2rem;
 display:flex;
 justify-content:space-between;
 align-items:center;
 z-index:1000;
-border-bottom:1px solid rgba(0,255,157,0.1);
+border-bottom:1px solid rgba(0,255,157,.1);
 }
 
 .logo{
@@ -41,7 +41,7 @@ nav a{
 color:#ccc;
 text-decoration:none;
 font-weight:500;
-transition:color .3s;
+transition:.3s;
 }
 
 nav a:hover{
@@ -91,11 +91,6 @@ padding:1rem 2.5rem;
 border-radius:50px;
 text-decoration:none;
 font-weight:700;
-transition:.3s;
-}
-
-.cta-button:hover{
-transform:translateY(-3px);
 }
 
 .gallery{
@@ -111,13 +106,13 @@ max-width:300px;
 height:200px;
 object-fit:cover;
 border-radius:10px;
-border:2px solid rgba(255,255,255,0.1);
+border:2px solid rgba(255,255,255,.1);
 cursor:pointer;
 }
 
 footer{
 text-align:center;
 padding:2rem;
-background:rgba(10,10,15,0.9);
+background:rgba(10,10,15,.9);
 color:#888;
 }
