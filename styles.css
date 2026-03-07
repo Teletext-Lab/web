@@ -253,3 +253,8 @@ body.light-mode footer{
 background:#eaeaea;
 color:#333;
 }
+.whatsapp-btn img{
+width:28px;
+height:28px;
+filter:invert(1);
+}
