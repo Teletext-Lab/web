@@ -71,6 +71,22 @@ nav a:hover{
 color:#00ff9d;
 }
 
+/* idioma */
+
+.lang{
+display:flex;
+gap:10px;
+margin-left:20px;
+}
+
+.lang button{
+background:none;
+border:none;
+color:#00ff9d;
+cursor:pointer;
+font-size:0.9rem;
+}
+
 /* BOTON TEMA */
 
 .theme-toggle{
@@ -157,17 +173,6 @@ padding:2rem;
 text-align:center;
 }
 
-.card h3{
-margin-bottom:1rem;
-}
-
-.card a{
-display:inline-block;
-margin-top:15px;
-color:#00ff9d;
-text-decoration:none;
-}
-
 /* CONTACTO */
 
 .contact-section{
@@ -213,36 +218,11 @@ box-shadow:0 5px 15px rgba(0,0,0,0.3);
 z-index:1500;
 }
 
-.whatsapp-btn:hover{
-transform:scale(1.08);
-}
-
 /* MODO CLARO */
 
 body.light-mode{
 background:#f5f5f5;
 color:#111;
-}
-
-body.light-mode header{
-background:#ffffff;
-}
-
-body.light-mode nav a{
-color:#333;
-}
-
-body.light-mode .card{
-background:#ffffff;
-}
-
-body.light-mode .contact-section{
-background:#eeeeee;
-}
-
-body.light-mode footer{
-background:#eaeaea;
-color:#333;
 }
 
 </style>
@@ -264,6 +244,11 @@ color:#333;
 </ul>
 </nav>
 
+<div class="lang">
+<button onclick="setLang('es')">ES</button>
+<button onclick="setLang('en')">EN</button>
+</div>
+
 <button id="themeToggle" class="theme-toggle">🌙</button>
 
 </header>
@@ -272,17 +257,16 @@ color:#333;
 
 <h1>Textlab</h1>
 
-<p class="subtitle">
+<p class="subtitle" data-es="Desarrollo Web & Soluciones Digitales" data-en="Web Development & Digital Solutions">
 Desarrollo Web & Soluciones Digitales
 </p>
 
-<p class="tagline">
+<p class="tagline" data-es="Desarrollo Web y Soluciones Digitales para emprendedores y negocios."
+data-en="Web development and digital solutions for entrepreneurs and businesses.">
 Desarrollo Web y Soluciones Digitales para emprendedores y negocios.
 </p>
 
-<a href="#servicios" class="cta-button">
-Ver servicios
-</a>
+<a href="#servicios" class="cta-button">Servicios</a>
 
 </section>
 
@@ -292,30 +276,13 @@ Ver servicios
 
 <div class="grid">
 
-<div class="card">
-<h3>Landing Page</h3>
-<p>Diseño de páginas simples para presentar tu proyecto o negocio.</p>
-</div>
-
-<div class="card">
-<h3>Web Simple</h3>
-<p>Sitios web profesionales con varias secciones.</p>
-</div>
-
-<div class="card">
-<h3>Tienda Online</h3>
-<p>E-commerce autogestionable listo para vender.</p>
-</div>
-
-<div class="card">
-<h3>Soporte Técnico</h3>
-<p>Mantenimiento tecnológico para oficinas y negocios.</p>
-</div>
-
-<div class="card">
-<h3>Configuración E-commerce</h3>
-<p>Configuración de Tiendanube, Shopify o WooCommerce.</p>
-</div>
+<div class="card"><h3>Landing Page</h3></div>
+<div class="card"><h3>Web Simple</h3></div>
+<div class="card"><h3>Tienda Online</h3></div>
+<div class="card"><h3>WordPress</h3></div>
+<div class="card"><h3>Configuración E-commerce</h3></div>
+<div class="card"><h3>Soporte Técnico</h3></div>
+<div class="card"><h3>Asistencia Tecnológica</h3></div>
 
 </div>
 
@@ -328,18 +295,18 @@ Ver servicios
 <div class="grid">
 
 <div class="card">
-<h3>1. Idea</h3>
-<p>Analizamos tu proyecto y definimos la mejor solución digital.</p>
+<h3>1</h3>
+<p>Analizamos tu proyecto.</p>
 </div>
 
 <div class="card">
-<h3>2. Desarrollo</h3>
-<p>Diseñamos y construimos tu sitio o sistema web.</p>
+<h3>2</h3>
+<p>Desarrollamos la solución.</p>
 </div>
 
 <div class="card">
-<h3>3. Lanzamiento</h3>
-<p>Publicamos tu proyecto y te acompañamos en su crecimiento.</p>
+<h3>3</h3>
+<p>Lanzamos tu proyecto.</p>
 </div>
 
 </div>
@@ -354,19 +321,16 @@ Ver servicios
 
 <div class="card">
 <h3>TXTRadio</h3>
-<p>Radio experimental online.</p>
 <a href="https://www.txtradio.site/" target="_blank">Ver proyecto</a>
 </div>
 
 <div class="card">
 <h3>Cineclub</h3>
-<p>Archivo audiovisual online.</p>
 <a href="https://abtxt.github.io/cineclub/" target="_blank">Ver proyecto</a>
 </div>
 
 <div class="card">
 <h3>Fanzinoteca</h3>
-<p>Archivo digital de fanzines.</p>
 <a href="https://github.com/labtxt/fanzinoteca" target="_blank">Ver proyecto</a>
 </div>
 
@@ -382,17 +346,17 @@ Ver servicios
 
 <div>
 <h4>Email</h4>
-<p>hola@teletextlab.dev</p>
+<p>emilianoimit@gmail.com</p>
 </div>
 
 <div>
-<h4>Horario</h4>
-<p>Lunes a Viernes</p>
+<h4>Celular</h4>
+<p>2920 27-6985</p>
 </div>
 
 <div>
 <h4>Base</h4>
-<p>Laboratorio Digital</p>
+<p>Argentina</p>
 </div>
 
 </div>
@@ -400,49 +364,32 @@ Ver servicios
 </section>
 
 <footer>
-
 © 2026 Textlab — Desarrollo Web & Soluciones Digitales
-
 </footer>
 
-<a href="https://wa.me/5492920000000" class="whatsapp-btn" target="_blank">💬</a>
+<a href="https://wa.me/5492920276985" class="whatsapp-btn" target="_blank">💬</a>
 
 <script>
 
-/* SCROLL SUAVE */
+/* idioma */
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-anchor.addEventListener('click',function(e){
-e.preventDefault();
-const target=document.querySelector(this.getAttribute('href'));
-if(target){
-window.scrollTo({
-top:target.offsetTop-80,
-behavior:'smooth'
-});
+function setLang(lang){
+
+document.querySelectorAll("[data-es]").forEach(el=>{
+
+el.textContent = el.getAttribute("data-"+lang)
+
+})
+
 }
-});
-});
 
-/* TOGGLE TEMA */
+/* tema */
 
 const themeBtn=document.getElementById("themeToggle");
 
-if(localStorage.getItem("theme")==="light"){
-document.body.classList.add("light-mode");
-themeBtn.textContent="☀️";
-}
-
 themeBtn.addEventListener("click",()=>{
-document.body.classList.toggle("light-mode");
 
-if(document.body.classList.contains("light-mode")){
-themeBtn.textContent="☀️";
-localStorage.setItem("theme","light");
-}else{
-themeBtn.textContent="🌙";
-localStorage.setItem("theme","dark");
-}
+document.body.classList.toggle("light-mode");
 
 });
 
