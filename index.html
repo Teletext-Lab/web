@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Textlab</title>
-
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2285%22 font-weight=%22bold%22 font-family=%22monospace%22 fill=%22%2300ff9d%22>T</text></svg>">
+<title>Textlab — Desarrollo Web & Soluciones Digitales</title>
 
 <link rel="stylesheet" href="styles.css">
 
@@ -20,14 +19,23 @@
 
 <nav>
 <ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#servicios">Servicios</a></li>
-<li><a href="#proyectos">Proyectos</a></li>
-<li><a href="#contacto">Contacto</a></li>
+<li><a href="#home" data-es="Inicio" data-en="Home">Inicio</a></li>
+<li><a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a></li>
+<li><a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
+<li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
 </ul>
 </nav>
 
-<button id="themeToggle" class="theme-toggle">🌙</button>
+<div class="controls">
+
+<select id="languageSwitcher">
+<option value="es">ES</option>
+<option value="en">EN</option>
+</select>
+
+<button id="themeToggle">🌙</button>
+
+</div>
 
 </header>
 
@@ -35,49 +43,52 @@
 
 <h1>Textlab</h1>
 
-<p class="subtitle">
-Laboratorio de Soluciones Digitales
+<p class="subtitle"
+data-es="Desarrollo Web y Soluciones Digitales"
+data-en="Web Development & Digital Solutions">
+Desarrollo Web y Soluciones Digitales
 </p>
 
-<p class="tagline">
-Exploramos la intersección entre tecnología, diseño y comunicación experimental.
+<p class="tagline"
+data-es="Soluciones digitales para emprendedores y negocios."
+data-en="Digital solutions for entrepreneurs and businesses.">
+Soluciones digitales para emprendedores y negocios.
 </p>
-
-<a href="#proyectos" class="cta-button">
-Explorar Proyectos
-</a>
 
 </section>
 
 <section class="section" id="servicios">
 
-<h2 class="section-title">Servicios</h2>
+<h2 class="section-title"
+data-es="Servicios"
+data-en="Services">
+Servicios
+</h2>
 
 <div class="grid">
 
 <div class="card">
-<h3>Desarrollo Web</h3>
-<p>Creación de sitios web modernos.</p>
+<h3>Landing Page</h3>
 </div>
 
 <div class="card">
-<h3>SaaS a Medida</h3>
-<p>Desarrollo de software web personalizado.</p>
+<h3>Web Simple</h3>
 </div>
 
 <div class="card">
-<h3>Soporte Técnico</h3>
-<p>Mantenimiento tecnológico para oficinas y negocios.</p>
+<h3>Tienda Online</h3>
 </div>
 
 <div class="card">
-<h3>Streaming</h3>
-<p>Configuración técnica para radios y streams.</p>
+<h3>WordPress</h3>
 </div>
 
 <div class="card">
-<h3>Diseño</h3>
-<p>Diseño gráfico y diseño web.</p>
+<h3>Configuración E-commerce</h3>
+</div>
+
+<div class="card">
+<h3>Asistencia Tecnológica</h3>
 </div>
 
 </div>
@@ -86,26 +97,24 @@ Explorar Proyectos
 
 <section class="section" id="proyectos">
 
-<h2 class="section-title">Proyectos</h2>
+<h2 class="section-title"
+data-es="Proyectos"
+data-en="Projects">
+Proyectos
+</h2>
 
 <div class="grid">
 
 <div class="card">
 <h3>TXTRadio</h3>
-<p>Radio experimental online.</p>
-<a href="https://www.txtradio.site/" target="_blank">Ver proyecto</a>
 </div>
 
 <div class="card">
 <h3>Cineclub</h3>
-<p>Archivo audiovisual online.</p>
-<a href="https://abtxt.github.io/cineclub/" target="_blank">Ver proyecto</a>
 </div>
 
 <div class="card">
 <h3>Fanzinoteca</h3>
-<p>Archivo digital de fanzines.</p>
-<a href="https://github.com/labtxt/fanzinoteca" target="_blank">Ver proyecto</a>
 </div>
 
 </div>
@@ -114,26 +123,17 @@ Explorar Proyectos
 
 <section class="contact-section" id="contacto">
 
-<h2 class="section-title">
+<h2 class="section-title"
+data-es="Contacto"
+data-en="Contact">
 Contacto
 </h2>
 
 <div class="contact-info">
 
-<div>
-<h4>Email</h4>
-<p>hola@teletextlab.dev</p>
-</div>
+<p>Email: emilianoimit@gmail.com</p>
 
-<div>
-<h4>Horario</h4>
-<p>Lunes a Viernes</p>
-</div>
-
-<div>
-<h4>Base</h4>
-<p>Laboratorio Digital</p>
-</div>
+<p>Celular: 2920 27-6985</p>
 
 </div>
 
@@ -141,11 +141,15 @@ Contacto
 
 <footer>
 
-© 2026 Textlab — Laboratorio de Soluciones Digitales
+<p>© 2026 Textlab</p>
 
 </footer>
+
 <a href="https://wa.me/5492920276985" class="whatsapp-btn" target="_blank">
 <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg">
 </a>
+
+<script src="script.js"></script>
+
 </body>
 </html>
