@@ -258,3 +258,52 @@ width:28px;
 height:28px;
 filter:invert(1);
 }
+/* MOBILE */
+
+@media (max-width:768px){
+
+header{
+padding:1rem;
+}
+
+nav ul{
+gap:1rem;
+font-size:0.9rem;
+}
+
+.hero h1{
+font-size:2.4rem;
+}
+
+.subtitle{
+font-size:1.2rem;
+}
+
+.tagline{
+font-size:1rem;
+}
+
+.section{
+padding:3rem 1.5rem;
+}
+
+.section-title{
+font-size:2rem;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.contact-info{
+grid-template-columns:1fr;
+}
+
+.whatsapp-btn{
+width:50px;
+height:50px;
+bottom:20px;
+right:20px;
+}
+
+}
