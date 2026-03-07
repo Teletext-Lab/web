@@ -10,24 +10,15 @@
 
 <style>
 
-/* RESET */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
 background:#0a0a0a;
 color:#f0f0f0;
 line-height:1.6;
 overflow-x:hidden;
-transition:background 0.3s,color 0.3s;
 }
-
-/* HEADER */
 
 header{
 position:fixed;
@@ -50,9 +41,7 @@ color:#00ff9d;
 text-decoration:none;
 }
 
-.logo span{
-color:#fff;
-}
+.logo span{color:#fff;}
 
 nav ul{
 display:flex;
@@ -64,40 +53,17 @@ nav a{
 color:#ccc;
 text-decoration:none;
 font-weight:500;
-transition:color 0.3s;
 }
 
-nav a:hover{
-color:#00ff9d;
-}
-
-/* idioma */
-
-.lang{
-display:flex;
-gap:10px;
-margin-left:20px;
-}
+nav a:hover{color:#00ff9d;}
 
 .lang button{
 background:none;
 border:none;
 color:#00ff9d;
 cursor:pointer;
-font-size:0.9rem;
+margin-left:10px;
 }
-
-/* BOTON TEMA */
-
-.theme-toggle{
-background:none;
-border:none;
-font-size:1.4rem;
-cursor:pointer;
-color:#00ff9d;
-}
-
-/* HERO */
 
 .hero{
 min-height:100vh;
@@ -142,10 +108,7 @@ padding:1rem 2.5rem;
 border-radius:50px;
 text-decoration:none;
 font-weight:700;
-font-size:1.1rem;
 }
-
-/* SECCIONES */
 
 .section{
 padding:5rem 2rem;
@@ -173,8 +136,6 @@ padding:2rem;
 text-align:center;
 }
 
-/* CONTACTO */
-
 .contact-section{
 padding:5rem 2rem;
 background:rgba(15,15,25,0.7);
@@ -189,16 +150,12 @@ max-width:900px;
 margin:3rem auto 0;
 }
 
-/* FOOTER */
-
 footer{
 text-align:center;
 padding:2rem;
 background:rgba(10,10,15,0.9);
 color:#888;
 }
-
-/* WHATSAPP */
 
 .whatsapp-btn{
 position:fixed;
@@ -214,15 +171,24 @@ align-items:center;
 justify-content:center;
 border-radius:50%;
 text-decoration:none;
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-z-index:1500;
 }
 
-/* MODO CLARO */
+input,textarea{
+width:100%;
+padding:12px;
+margin-bottom:12px;
+border:none;
+border-radius:6px;
+}
 
-body.light-mode{
-background:#f5f5f5;
-color:#111;
+button.form-btn{
+background:#00ff9d;
+color:#000;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+font-weight:700;
+cursor:pointer;
 }
 
 </style>
@@ -249,19 +215,20 @@ color:#111;
 <button onclick="setLang('en')">EN</button>
 </div>
 
-<button id="themeToggle" class="theme-toggle">🌙</button>
-
 </header>
 
 <section class="hero" id="home">
 
 <h1>Textlab</h1>
 
-<p class="subtitle" data-es="Desarrollo Web & Soluciones Digitales" data-en="Web Development & Digital Solutions">
+<p class="subtitle"
+data-es="Desarrollo Web & Soluciones Digitales"
+data-en="Web Development & Digital Solutions">
 Desarrollo Web & Soluciones Digitales
 </p>
 
-<p class="tagline" data-es="Desarrollo Web y Soluciones Digitales para emprendedores y negocios."
+<p class="tagline"
+data-es="Desarrollo Web y Soluciones Digitales para emprendedores y negocios."
 data-en="Web development and digital solutions for entrepreneurs and businesses.">
 Desarrollo Web y Soluciones Digitales para emprendedores y negocios.
 </p>
@@ -361,6 +328,46 @@ Desarrollo Web y Soluciones Digitales para emprendedores y negocios.
 
 </div>
 
+<div style="max-width:700px;margin:40px auto 0;">
+
+<form action="https://formspree.io/f/mvgpbdyr" method="POST">
+
+<input type="text" name="nombre" placeholder="Nombre" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="mensaje" placeholder="Mensaje" required></textarea>
+
+<button class="form-btn" type="submit">
+Enviar mensaje
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">Newsletter</h2>
+
+<div style="max-width:600px;margin:0 auto;text-align:center;">
+
+<p style="margin-bottom:25px;color:#aaa;">
+Recibí noticias sobre proyectos y novedades de Textlab.
+</p>
+
+<form action="https://formspree.io/f/mvgpbdyr" method="POST">
+
+<input type="email" name="email" placeholder="Tu email" required>
+
+<button class="form-btn" type="submit">
+Suscribirme
+</button>
+
+</form>
+
+</div>
+
 </section>
 
 <footer>
@@ -371,27 +378,13 @@ Desarrollo Web y Soluciones Digitales para emprendedores y negocios.
 
 <script>
 
-/* idioma */
-
 function setLang(lang){
 
 document.querySelectorAll("[data-es]").forEach(el=>{
-
-el.textContent = el.getAttribute("data-"+lang)
-
+el.textContent=el.getAttribute("data-"+lang)
 })
 
 }
-
-/* tema */
-
-const themeBtn=document.getElementById("themeToggle");
-
-themeBtn.addEventListener("click",()=>{
-
-document.body.classList.toggle("light-mode");
-
-});
 
 </script>
 
