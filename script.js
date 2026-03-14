@@ -1,84 +1,61 @@
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+/* DARK MODE */
 
-anchor.addEventListener('click', function(e){
+const themeBtn=document.getElementById("themeToggle")
 
-const target = document.querySelector(this.getAttribute('href'));
+let theme=localStorage.getItem("theme") || "dark"
 
-if(target){
+function applyTheme(){
 
-e.preventDefault();
-
-window.scrollTo({
-top: target.offsetTop - 80,
-behavior: 'smooth'
-});
-
-}
-
-});
-
-});
-
-const themeBtn = document.getElementById("themeToggle");
-
-function setTheme(theme){
-
-if(theme === "light"){
-
-document.body.classList.add("light-mode");
-themeBtn.textContent = "☀️";
-
+if(theme==="light"){
+document.body.classList.add("light-mode")
+themeBtn.textContent="☀️"
 }else{
-
-document.body.classList.remove("light-mode");
-themeBtn.textContent = "🌙";
-
+document.body.classList.remove("light-mode")
+themeBtn.textContent="🌙"
 }
 
 }
 
-let savedTheme = localStorage.getItem("theme") || "dark";
+applyTheme()
 
-setTheme(savedTheme);
-
-themeBtn.addEventListener("click", () => {
-
-savedTheme = savedTheme === "dark" ? "light" : "dark";
-
-localStorage.setItem("theme", savedTheme);
-
-setTheme(savedTheme);
-
-});
-
-const langBtn = document.getElementById("langToggle");
-
-let currentLang = localStorage.getItem("lang") || "es";
-
-function setLanguage(lang){
-
-document.querySelectorAll("[data-es]").forEach(el => {
-
-const text = el.getAttribute("data-" + lang);
-
-if(text){
-el.textContent = text;
+themeBtn.onclick=()=>{
+theme=theme==="dark"?"light":"dark"
+localStorage.setItem("theme",theme)
+applyTheme()
 }
 
-});
 
-langBtn.textContent = lang.toUpperCase();
+/* IDIOMA */
+
+const langBtn=document.getElementById("langToggle")
+
+let lang=localStorage.getItem("lang") || "es"
+
+function applyLang(){
+
+document.querySelectorAll("[data-es]").forEach(el=>{
+el.textContent=el.getAttribute("data-"+lang)
+})
+
+langBtn.textContent=lang.toUpperCase()
 
 }
 
-setLanguage(currentLang);
+applyLang()
 
-langBtn.addEventListener("click", () => {
+langBtn.onclick=()=>{
+lang=lang==="es"?"en":"es"
+localStorage.setItem("lang",lang)
+applyLang()
+}
 
-currentLang = currentLang === "es" ? "en" : "es";
 
-localStorage.setItem("lang", currentLang);
+/* EXPANDIR PROYECTOS */
 
-setLanguage(currentLang);
+document.querySelectorAll(".card").forEach(card=>{
 
-});
+card.addEventListener("click",()=>{
+card.classList.toggle("project-expanded")
+})
+
+})
