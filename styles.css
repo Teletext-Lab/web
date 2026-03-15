@@ -4,10 +4,30 @@ padding:0;
 box-sizing:border-box;
 }
 
+:root{
+
+--bg:#0a0a0a;
+--text:#ffffff;
+--card:#121212;
+--accent:#00ffa6;
+--border:rgba(255,255,255,0.08);
+
+}
+
+body.light{
+
+--bg:#ffffff;
+--text:#111111;
+--card:#f3f3f3;
+--accent:#00b37a;
+--border:rgba(0,0,0,0.08);
+
+}
+
 body{
 font-family:Arial, Helvetica, sans-serif;
-background:#0a0a0a;
-color:white;
+background:var(--bg);
+color:var(--text);
 line-height:1.6;
 }
 
@@ -22,20 +42,24 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:18px 40px;
-background:rgba(0,0,0,0.6);
+background:rgba(0,0,0,0.5);
 backdrop-filter:blur(10px);
 z-index:1000;
+}
+
+body.light header{
+background:rgba(255,255,255,0.7);
 }
 
 .logo{
 font-size:20px;
 font-weight:bold;
 text-decoration:none;
-color:white;
+color:var(--text);
 }
 
 .logo span{
-color:#00ffa6;
+color:var(--accent);
 }
 
 nav{
@@ -45,7 +69,7 @@ gap:30px;
 
 nav a{
 text-decoration:none;
-color:white;
+color:var(--text);
 font-size:15px;
 opacity:0.8;
 transition:0.2s;
@@ -62,8 +86,8 @@ gap:10px;
 
 .header-controls button{
 background:none;
-border:1px solid rgba(255,255,255,0.2);
-color:white;
+border:1px solid var(--border);
+color:var(--text);
 padding:6px 10px;
 border-radius:6px;
 cursor:pointer;
@@ -93,12 +117,17 @@ background:rgba(0,0,0,0.6);
 z-index:1;
 }
 
+body.light .hero::after{
+background:rgba(255,255,255,0.55);
+}
+
 .hero-content{
 position:relative;
 z-index:2;
 max-width:750px;
 margin:auto;
 }
+
 .hero h1{
 font-size:64px;
 margin-bottom:20px;
@@ -106,7 +135,7 @@ margin-bottom:20px;
 
 .subtitle{
 font-size:26px;
-color:#00ffa6;
+color:var(--accent);
 margin-bottom:10px;
 }
 
@@ -118,7 +147,7 @@ margin-bottom:30px;
 
 .cta-button{
 display:inline-block;
-background:#00ffa6;
+background:var(--accent);
 color:black;
 padding:14px 28px;
 border-radius:30px;
@@ -156,17 +185,17 @@ gap:25px;
 /* CARDS */
 
 .card{
-background:#121212;
+background:var(--card);
 padding:30px;
 border-radius:10px;
-border:1px solid rgba(255,255,255,0.05);
+border:1px solid var(--border);
 transition:0.25s;
 cursor:pointer;
 }
 
 .card:hover{
 transform:translateY(-5px);
-border-color:#00ffa6;
+border-color:var(--accent);
 }
 
 .card h3{
