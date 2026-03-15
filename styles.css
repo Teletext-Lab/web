@@ -4,24 +4,22 @@ padding:0;
 box-sizing:border-box;
 }
 
-:root{
+/* VARIABLES TEMA */
 
+:root{
 --bg:#0a0a0a;
 --text:#ffffff;
 --card:#121212;
 --accent:#00ffa6;
 --border:rgba(255,255,255,0.08);
-
 }
 
 body.light{
-
 --bg:#ffffff;
 --text:#111111;
 --card:#f3f3f3;
 --accent:#00b37a;
 --border:rgba(0,0,0,0.08);
-
 }
 
 body{
@@ -160,7 +158,7 @@ transition:0.2s;
 transform:scale(1.05);
 }
 
-/* SECTIONS */
+/* SECCIONES */
 
 .section{
 padding:100px 40px;
@@ -202,7 +200,7 @@ border-color:var(--accent);
 margin-bottom:10px;
 }
 
-/* CONTACT */
+/* CONTACTO */
 
 .contact-section{
 text-align:center;
@@ -246,7 +244,7 @@ width:28px;
 height:28px;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 
 @media (max-width:768px){
 
@@ -255,7 +253,7 @@ padding:15px 20px;
 }
 
 nav{
-gap:15px;
+display:none;
 }
 
 .hero h1{
