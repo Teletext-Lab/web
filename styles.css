@@ -5,11 +5,10 @@ box-sizing:border-box;
 }
 
 body{
-font-family:system-ui;
+font-family:Arial, Helvetica, sans-serif;
 background:#0a0a0a;
-color:#f0f0f0;
+color:white;
 line-height:1.6;
-transition:.3s;
 }
 
 /* HEADER */
@@ -17,39 +16,43 @@ transition:.3s;
 header{
 position:fixed;
 top:0;
+left:0;
 width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 30px;
-background:rgba(10,10,10,.9);
+padding:18px 40px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
 z-index:1000;
 }
 
 .logo{
-font-size:1.8rem;
-font-weight:700;
-color:white;
+font-size:20px;
+font-weight:bold;
 text-decoration:none;
+color:white;
 }
 
 .logo span{
-color:#00ff9d;
+color:#00ffa6;
 }
 
 nav{
 display:flex;
-gap:25px;
+gap:30px;
 }
 
 nav a{
-color:#ccc;
 text-decoration:none;
-font-size:0.95rem;
+color:white;
+font-size:15px;
+opacity:0.8;
+transition:0.2s;
 }
 
 nav a:hover{
-color:#00ff9d;
+opacity:1;
 }
 
 .header-controls{
@@ -57,69 +60,85 @@ display:flex;
 gap:10px;
 }
 
-button{
+.header-controls button{
 background:none;
-border:none;
-color:#00ff9d;
+border:1px solid rgba(255,255,255,0.2);
+color:white;
+padding:6px 10px;
+border-radius:6px;
 cursor:pointer;
-font-size:16px;
 }
 
 /* HERO */
 
 .hero{
-min-height:100vh;
+height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
+padding:0 20px;
+background:url("fondo.jpg") center/cover no-repeat;
+position:relative;
+}
 
-background:
-linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-url("fondo.png");
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.6);
+}
 
-background-size:cover;
-background-position:center;
-padding:120px 20px 60px 20px;
+.hero-content{
+position:relative;
+max-width:750px;
+margin:auto;
 }
 
 .hero h1{
-font-size:4rem;
-margin-bottom:10px;
+font-size:64px;
+margin-bottom:20px;
 }
 
 .subtitle{
-color:#00ff9d;
-font-size:1.6rem;
+font-size:26px;
+color:#00ffa6;
 margin-bottom:10px;
 }
 
 .tagline{
-color:#bbb;
-margin-bottom:2rem;
+font-size:18px;
+opacity:0.8;
+margin-bottom:30px;
 }
 
 .cta-button{
-background:#00ff9d;
+display:inline-block;
+background:#00ffa6;
 color:black;
-padding:12px 28px;
-border-radius:40px;
+padding:14px 28px;
+border-radius:30px;
 text-decoration:none;
-font-weight:600;
+font-weight:bold;
+transition:0.2s;
+}
+
+.cta-button:hover{
+transform:scale(1.05);
 }
 
 /* SECTIONS */
 
 .section{
-padding:100px 30px;
+padding:100px 40px;
 max-width:1100px;
 margin:auto;
 }
 
 .section-title{
+font-size:32px;
+margin-bottom:40px;
 text-align:center;
-font-size:2.3rem;
-margin-bottom:50px;
 }
 
 /* GRID */
@@ -133,68 +152,43 @@ gap:25px;
 /* CARDS */
 
 .card{
+background:#121212;
 padding:30px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,.1);
-background:#141414;
-transition:.25s ease;
+border-radius:10px;
+border:1px solid rgba(255,255,255,0.05);
+transition:0.25s;
 cursor:pointer;
-position:relative;
 }
 
 .card:hover{
-transform:translateY(-4px);
-border-color:#00ff9d;
+transform:translateY(-5px);
+border-color:#00ffa6;
 }
 
-/* PROYECTOS EXPANSIÓN ESTABLE */
-
-.project-expanded{
-transform:scale(1.02);
-border-color:#00ff9d;
-background:#1b1b1b;
-box-shadow:0 10px 25px rgba(0,0,0,.4);
-}
-
-/* PREVIEW OCULTO */
-
-.project-preview{
-
-max-height:0;
-overflow:hidden;
-opacity:0;
-
-transition:all .35s ease;
-
-margin-top:10px;
-color:#bbb;
-}
-
-/* PREVIEW VISIBLE */
-
-.project-expanded .project-preview{
-
-max-height:200px;
-opacity:1;
-
+.card h3{
+margin-bottom:10px;
 }
 
 /* CONTACT */
 
-.contact-info{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:30px;
+.contact-section{
 text-align:center;
+}
+
+.contact-info{
+display:flex;
+justify-content:center;
+gap:60px;
+margin-top:20px;
+flex-wrap:wrap;
 }
 
 /* FOOTER */
 
 footer{
 text-align:center;
-padding:40px;
-background:#111;
-margin-top:80px;
+padding:30px;
+opacity:0.6;
 }
 
 /* WHATSAPP */
@@ -203,64 +197,44 @@ margin-top:80px;
 position:fixed;
 bottom:25px;
 right:25px;
-width:60px;
-height:60px;
-background:#25D366;
+background:#25d366;
+width:55px;
+height:55px;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-z-index:999;
+box-shadow:0 6px 20px rgba(0,0,0,0.3);
+z-index:1000;
 }
 
 .whatsapp-btn svg{
 width:28px;
+height:28px;
 }
 
-/* LIGHT MODE */
+/* RESPONSIVE */
 
-body.light-mode{
-background:#ffffff;
-color:#111111;
-}
-
-body.light-mode header{
-background:#ffffff;
-}
-
-body.light-mode nav a{
-color:#222222;
-}
-
-body.light-mode .card{
-background:#f5f5f5;
-color:#111111;
-border:1px solid #e2e2e2;
-}
-
-body.light-mode footer{
-background:#eeeeee;
-color:#111111;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-nav{
-display:none;
-}
-
-.header-controls{
-display:none;
-}
+@media (max-width:768px){
 
 header{
-justify-content:center;
+padding:15px 20px;
+}
+
+nav{
+gap:15px;
 }
 
 .hero h1{
-font-size:2.8rem;
+font-size:42px;
+}
+
+.subtitle{
+font-size:20px;
+}
+
+.tagline{
+font-size:16px;
 }
 
 .section{
