@@ -233,3 +233,10 @@ padding:80px 20px;
 }
 
 }
+/* PROJECT CARDS LINKS */
+
+.project-card{
+text-decoration:none;
+color:inherit;
+display:block;
+}
