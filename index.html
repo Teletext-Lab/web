@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>textlab</title>
+<title>Textlab</title>
 
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="styles.css">
@@ -29,10 +29,8 @@
 </nav>
 
 <div class="header-controls">
-
 <button id="langToggle">EN</button>
 <button id="themeToggle">🌙</button>
-
 </div>
 
 </header>
@@ -42,7 +40,7 @@
 
 <div class="hero-content">
 
-<h1>textlab</h1>
+<h1>Textlab</h1>
 
 <p class="subtitle"
 data-es="Desarrollo web y soluciones digitales"
@@ -56,11 +54,7 @@ data-en="We build websites, software and digital tools.">
 Creamos sitios web, software y herramientas digitales.
 </p>
 
-<a href="#servicios" class="cta-button"
-data-es="Explorar"
-data-en="Explore">
-Explorar
-</a>
+<a href="#servicios" class="cta-button">Explorar</a>
 
 </div>
 
@@ -69,15 +63,11 @@ Explorar
 
 <section class="section" id="servicios">
 
-<h2 class="section-title"
-data-es="Servicios"
-data-en="Services">
-Servicios
-</h2>
+<h2 class="section-title">Servicios</h2>
 
 <div class="grid">
 
-<div class="card">
+<div class="card" id="webService">
 <h3>Diseño Web</h3>
 <p>Creación de sitios modernos y optimizados.</p>
 </div>
@@ -99,32 +89,18 @@ Servicios
 
 <section class="section" id="proyectos">
 
-<h2 class="section-title"
-data-es="Proyectos"
-data-en="Projects">
-Proyectos
-</h2>
+<h2 class="section-title">Proyectos</h2>
 
 <div class="grid">
 
 <a href="https://www.txtradio.site/" target="_blank" class="card project-card">
-
 <h3>TXTRadio</h3>
-
-<p class="project-preview">
-Radio online experimental.
-</p>
-
+<p class="project-preview">Radio online experimental.</p>
 </a>
 
 <a href="https://labtxt.github.io/cineclub/" target="_blank" class="card project-card">
-
 <h3>Cineclub</h3>
-
-<p class="project-preview">
-Archivo audiovisual experimental.
-</p>
-
+<p class="project-preview">Archivo audiovisual experimental.</p>
 </a>
 
 </div>
@@ -134,11 +110,7 @@ Archivo audiovisual experimental.
 
 <section class="section contact-section" id="contacto">
 
-<h2 class="section-title"
-data-es="Contacto"
-data-en="Contact">
-Contacto
-</h2>
+<h2 class="section-title">Contacto</h2>
 
 <div class="contact-info">
 
@@ -156,6 +128,7 @@ Contacto
 
 </section>
 
+
 <footer>
 © 2026 Textlab
 </footer>
@@ -165,12 +138,50 @@ Contacto
 class="whatsapp-btn"
 target="_blank">
 
-<svg viewBox="0 0 24 24">
+<svg viewBox="0 0 24 24" width="26" height="26">
 <path fill="white"
 d="M17.47 14.38c-.27-.14-1.58-.78-1.83-.87-.25-.09-.43-.14-.61.14-.18.27-.7.87-.86 1.05-.16.18-.31.2-.58.07-.27-.14-1.14-.42-2.18-1.34-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.41.12-.54.12-.12.27-.31.41-.47.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.47-.07-.14-.61-1.48-.84-2.03-.22-.52-.45-.45-.61-.46h-.52c-.18 0-.47.07-.72.34-.25.27-.95.93-.95 2.27s.97 2.64 1.11 2.82c.14.18 1.92 2.93 4.66 4.11.65.28 1.16.45 1.56.58.66.21 1.26.18 1.73.11.53-.08 1.6-.65 1.83-1.28.22-.63.22-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
 </svg>
 
 </a>
+
+
+<!-- PANEL FULLSCREEN DISEÑO WEB -->
+
+<div id="webPanel" class="web-panel">
+
+<div class="web-panel-content">
+
+<button class="close-panel" id="closeWebPanel">✕</button>
+
+<h2>Diseño Web</h2>
+
+<div class="web-pricing">
+
+<div class="price-card">
+<h3>Landing Page</h3>
+<p>Hosting, dominio y SSL gratis.</p>
+<span>AR$ 240.000</span>
+</div>
+
+<div class="price-card">
+<h3>Web Simple</h3>
+<p>Hasta 4 secciones + galería.</p>
+<span>AR$ 350.000</span>
+</div>
+
+<div class="price-card">
+<h3>Tienda Online</h3>
+<p>E-commerce autogestionable.</p>
+<span>AR$ 490.000</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 
 <script src="script.js"></script>
 
