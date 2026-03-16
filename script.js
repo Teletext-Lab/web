@@ -1,61 +1,54 @@
 /* DARK MODE */
 
-const themeBtn=document.getElementById("themeToggle")
-
-let theme=localStorage.getItem("theme") || "dark"
-
-function applyTheme(){
-
-if(theme==="light"){
-document.body.classList.add("light-mode")
-themeBtn.textContent="☀️"
-}else{
-document.body.classList.remove("light-mode")
-themeBtn.textContent="🌙"
-}
-
-}
-
-applyTheme()
-
-themeBtn.onclick=()=>{
-theme=theme==="dark"?"light":"dark"
-localStorage.setItem("theme",theme)
-applyTheme()
+document.getElementById("themeToggle").onclick=()=>{
+document.body.classList.toggle("light")
 }
 
 
-/* IDIOMA */
+/* LANGUAGE */
 
-const langBtn=document.getElementById("langToggle")
+let lang="es"
 
-let lang=localStorage.getItem("lang") || "es"
+document.getElementById("langToggle").onclick=()=>{
 
-function applyLang(){
+lang=lang==="es"?"en":"es"
 
 document.querySelectorAll("[data-es]").forEach(el=>{
-el.textContent=el.getAttribute("data-"+lang)
+el.textContent=el.dataset[lang]
 })
 
-langBtn.textContent=lang.toUpperCase()
+document.getElementById("langToggle").textContent=lang==="es"?"EN":"ES"
 
 }
 
-applyLang()
 
-langBtn.onclick=()=>{
-lang=lang==="es"?"en":"es"
-localStorage.setItem("lang",lang)
-applyLang()
+/* SCROLL HEADER */
+
+window.addEventListener("scroll",()=>{
+
+const header=document.querySelector("header")
+
+if(window.scrollY>50){
+header.classList.add("scrolled")
+}else{
+header.classList.remove("scrolled")
 }
 
-
-/* EXPANDIR PROYECTOS */
-
-document.querySelectorAll(".card").forEach(card=>{
-
-card.addEventListener("click",()=>{
-card.classList.toggle("project-expanded")
 })
 
+
+/* SECTION ANIMATION */
+
+const sections=document.querySelectorAll(".section")
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("visible")
+}
+})
+})
+
+sections.forEach(section=>{
+observer.observe(section)
 })
