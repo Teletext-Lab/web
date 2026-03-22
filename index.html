@@ -4,11 +4,17 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Textlab - Desarrollo web y soluciones digitales desde la Patagonia">
+<meta name="keywords" content="desarrollo web, diseño web, automatización, patagonia, argentina, perú">
+<meta name="author" content="Textlab">
 
-<title>Textlab</title>
+<title>Textlab | Desarrollo web y soluciones digitales</title>
 
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 
 </head>
@@ -17,7 +23,7 @@
 
 <header>
 
-<a href="#" class="logo">text<span>.lab</span></a>
+<a href="#home" class="logo">text<span>.lab</span></a>
 
 <nav id="nav">
 
@@ -29,8 +35,8 @@
 </nav>
 
 <div class="header-controls">
-<button id="langToggle">EN</button>
-<button id="themeToggle">🌙</button>
+<button id="langToggle" aria-label="Cambiar idioma">EN</button>
+<button id="themeToggle" aria-label="Cambiar tema">🌙</button>
 </div>
 
 </header>
@@ -40,22 +46,26 @@
 
 <div class="hero-content">
 
-<h1>Textlab</h1>
+<h1 class="animate-up">Textlab</h1>
 
-<p class="subtitle"
+<p class="subtitle animate-up delay-1"
 data-es="Desarrollo web y soluciones digitales"
 data-en="Web development and digital solutions">
 Desarrollo web y soluciones digitales
 </p>
 
-<p class="tagline"
+<p class="tagline animate-up delay-2"
 data-es="Creamos sitios web, software y herramientas digitales."
 data-en="We build websites, software and digital tools.">
 Creamos sitios web, software y herramientas digitales.
 </p>
 
-<a href="#servicios" class="cta-button">Explorar</a>
+<a href="#servicios" class="cta-button animate-up delay-3" data-es="Explorar" data-en="Explore">Explorar</a>
 
+</div>
+
+<div class="hero-scroll-indicator">
+<span></span>
 </div>
 
 </section>
@@ -63,23 +73,29 @@ Creamos sitios web, software y herramientas digitales.
 
 <section class="section" id="servicios">
 
-<h2 class="section-title">Servicios</h2>
+<div class="section-header">
+<h2 class="section-title" data-es="Servicios" data-en="Services">Servicios</h2>
+<p class="section-subtitle" data-es="Lo que hacemos para potenciar tu negocio" data-en="What we do to boost your business">Lo que hacemos para potenciar tu negocio</p>
+</div>
 
 <div class="grid">
 
 <div class="card" id="webService">
-<h3>Diseño Web</h3>
-<p>Creación de sitios modernos y optimizados.</p>
+<h3 data-es="Diseño Web" data-en="Web Design">Diseño Web</h3>
+<p data-es="Creación de sitios modernos y optimizados." data-en="Creation of modern and optimized websites.">Creación de sitios modernos y optimizados.</p>
+<div class="card-hover-effect"></div>
 </div>
 
 <div class="card">
-<h3>Automatización</h3>
-<p>Herramientas digitales para procesos online.</p>
+<h3 data-es="Automatización" data-en="Automation">Automatización</h3>
+<p data-es="Herramientas digitales para procesos online." data-en="Digital tools for online processes.">Herramientas digitales para procesos online.</p>
+<div class="card-hover-effect"></div>
 </div>
 
 <div class="card">
-<h3>Soporte Técnico</h3>
-<p>Asistencia tecnológica y mantenimiento.</p>
+<h3 data-es="Soporte Técnico" data-en="Technical Support">Soporte Técnico</h3>
+<p data-es="Asistencia tecnológica y mantenimiento." data-en="Technical assistance and maintenance.">Asistencia tecnológica y mantenimiento.</p>
+<div class="card-hover-effect"></div>
 </div>
 
 </div>
@@ -89,18 +105,23 @@ Creamos sitios web, software y herramientas digitales.
 
 <section class="section" id="proyectos">
 
-<h2 class="section-title">Proyectos</h2>
+<div class="section-header">
+<h2 class="section-title" data-es="Proyectos" data-en="Projects">Proyectos</h2>
+<p class="section-subtitle" data-es="Trabajos que reflejan nuestra pasión" data-en="Work that reflects our passion">Trabajos que reflejan nuestra pasión</p>
+</div>
 
-<div class="grid">
+<div class="grid projects-grid">
 
 <a href="https://www.txtradio.site/" target="_blank" class="card project-card">
 <h3>TXTRadio</h3>
-<p class="project-preview">Radio online experimental.</p>
+<p class="project-preview" data-es="Radio online experimental." data-en="Experimental online radio.">Radio online experimental.</p>
+<span class="project-link">Ver proyecto →</span>
 </a>
 
 <a href="https://labtxt.github.io/cineclub/" target="_blank" class="card project-card">
 <h3>Cineclub</h3>
-<p class="project-preview">Archivo audiovisual experimental.</p>
+<p class="project-preview" data-es="Archivo audiovisual experimental." data-en="Experimental audiovisual archive.">Archivo audiovisual experimental.</p>
+<span class="project-link">Ver proyecto →</span>
 </a>
 
 </div>
@@ -108,20 +129,39 @@ Creamos sitios web, software y herramientas digitales.
 </section>
 
 
-<section class="section contact-section" id="contacto">
+<!-- SECCIÓN DIVIDIDA: QUIÉNES SOMOS + FORMULARIO DE CONTACTO -->
+<section class="section split-section" id="nosotros-contacto">
 
-<h2 class="section-title">Contacto</h2>
+<div class="split-container">
 
-<div class="contact-info">
-
-<div>
-<h4>Email</h4>
-<p>teletextlab@gmail.com</p>
+<div class="split-left">
+<h2 class="split-title" data-es="Quiénes somos" data-en="About us">Quiénes somos</h2>
+<p class="split-text" data-es="Textlab es un estudio de desarrollo web y soluciones digitales con sede en la Patagonia argentina. Nos especializamos en crear herramientas digitales funcionales, modernas y accesibles para negocios y emprendedores." data-en="Textlab is a web development and digital solutions studio based in Argentine Patagonia. We specialize in creating functional, modern and accessible digital tools for businesses and entrepreneurs.">Textlab es un estudio de desarrollo web y soluciones digitales con sede en la Patagonia argentina. Nos especializamos en crear herramientas digitales funcionales, modernas y accesibles para negocios y emprendedores.</p>
+<p class="split-text" data-es="Trabajamos con clientes de Argentina y Perú, ofreciendo soluciones a medida con atención personalizada y soporte continuo." data-en="We work with clients from Argentina and Peru, offering custom solutions with personalized attention and ongoing support.">Trabajamos con clientes de Argentina y Perú, ofreciendo soluciones a medida con atención personalizada y soporte continuo.</p>
 </div>
 
-<div>
-<h4>Ubicación</h4>
-<p>Patagonia</p>
+<div class="split-right">
+<h2 class="split-title" data-es="Contactanos" data-en="Contact us">Contactanos</h2>
+<form id="contactForm" class="contact-form-split">
+<div class="form-group">
+<input type="text" id="formNombre" placeholder="Nombre" required>
+</div>
+<div class="form-group">
+<input type="email" id="formEmail" placeholder="Email" required>
+</div>
+<div class="form-group">
+<select id="formPais">
+<option value="argentina" data-es="Argentina" data-en="Argentina">Argentina</option>
+<option value="peru" data-es="Perú" data-en="Peru">Perú</option>
+<option value="otro" data-es="Otro país" data-en="Other country">Otro país</option>
+</select>
+</div>
+<div class="form-group">
+<textarea id="formMensaje" rows="4" placeholder="Mensaje" required></textarea>
+</div>
+<button type="submit" class="form-submit" data-es="Enviar mensaje" data-en="Send message">Enviar mensaje</button>
+<div id="formMessageSplit" class="form-message-split"></div>
+</form>
 </div>
 
 </div>
@@ -129,14 +169,33 @@ Creamos sitios web, software y herramientas digitales.
 </section>
 
 
+<!-- FOOTER CON BANDERAS -->
 <footer>
-© 2026 Textlab
+<div class="footer-content">
+<div class="footer-brand">
+<p class="footer-logo">text<span>.lab</span></p>
+<p class="footer-tagline" data-es="Desarrollo web y soluciones digitales" data-en="Web development and digital solutions">Desarrollo web y soluciones digitales</p>
+</div>
+<div class="footer-flags">
+<span class="flag-label" data-es="Operamos en" data-en="We operate in">Operamos en</span>
+<div class="flags">
+<img src="https://flagcdn.com/w80/ar.png" alt="Argentina" class="flag-icon">
+<span class="flag-name">Argentina</span>
+<img src="https://flagcdn.com/w80/pe.png" alt="Perú" class="flag-icon">
+<span class="flag-name">Perú</span>
+</div>
+</div>
+<div class="footer-copyright">
+<p>© 2026 Textlab. <span data-es="Todos los derechos reservados" data-en="All rights reserved">Todos los derechos reservados</span>.</p>
+</div>
+</div>
 </footer>
 
 
 <a href="https://wa.me/5492920276985"
 class="whatsapp-btn"
-target="_blank">
+target="_blank"
+aria-label="WhatsApp">
 
 <svg viewBox="0 0 24 24" width="26" height="26">
 <path fill="white"
@@ -152,28 +211,48 @@ d="M17.47 14.38c-.27-.14-1.58-.78-1.83-.87-.25-.09-.43-.14-.61.14-.18.27-.7.87-.
 
 <div class="web-panel-content">
 
-<button class="close-panel" id="closeWebPanel">✕</button>
+<button class="close-panel" id="closeWebPanel" aria-label="Cerrar">✕</button>
 
-<h2>Diseño Web</h2>
+<h2 data-es="Diseño Web" data-en="Web Design">Diseño Web</h2>
+<p class="panel-subtitle" data-es="Elegí el plan que mejor se adapte a tus necesidades" data-en="Choose the plan that best fits your needs">Elegí el plan que mejor se adapte a tus necesidades</p>
 
 <div class="web-pricing">
 
 <div class="price-card">
-<h3>Landing Page</h3>
-<p>Hosting, dominio y SSL gratis.</p>
-<span>AR$ 240.000</span>
+<h3 data-es="Landing Page" data-en="Landing Page">Landing Page</h3>
+<p data-es="Hosting, dominio y SSL gratis." data-en="Hosting, domain and SSL free.">Hosting, dominio y SSL gratis.</p>
+<ul class="price-features">
+<li data-es="Diseño responsive" data-en="Responsive design">✓ Diseño responsive</li>
+<li data-es="Formulario de contacto" data-en="Contact form">✓ Formulario de contacto</li>
+<li data-es="SEO básico" data-en="Basic SEO">✓ SEO básico</li>
+</ul>
+<span class="price">AR$ 240.000</span>
+<a href="#nosotros-contacto" class="price-cta" data-es="Consultar" data-en="Inquire">Consultar →</a>
+</div>
+
+<div class="price-card featured">
+<div class="featured-badge" data-es="Más popular" data-en="Most popular">Más popular</div>
+<h3 data-es="Web Simple" data-en="Simple Website">Web Simple</h3>
+<p data-es="Hasta 4 secciones + galería." data-en="Up to 4 sections + gallery.">Hasta 4 secciones + galería.</p>
+<ul class="price-features">
+<li data-es="Panel de administración" data-en="Admin panel">✓ Panel de administración</li>
+<li data-es="Blog integrado" data-en="Integrated blog">✓ Blog integrado</li>
+<li data-es="Optimización de velocidad" data-en="Speed optimization">✓ Optimización de velocidad</li>
+</ul>
+<span class="price">AR$ 350.000</span>
+<a href="#nosotros-contacto" class="price-cta" data-es="Consultar" data-en="Inquire">Consultar →</a>
 </div>
 
 <div class="price-card">
-<h3>Web Simple</h3>
-<p>Hasta 4 secciones + galería.</p>
-<span>AR$ 350.000</span>
-</div>
-
-<div class="price-card">
-<h3>Tienda Online</h3>
-<p>E-commerce autogestionable.</p>
-<span>AR$ 490.000</span>
+<h3 data-es="Tienda Online" data-en="Online Store">Tienda Online</h3>
+<p data-es="E-commerce autogestionable." data-en="Self-managed e-commerce.">E-commerce autogestionable.</p>
+<ul class="price-features">
+<li data-es="Catálogo de productos" data-en="Product catalog">✓ Catálogo de productos</li>
+<li data-es="Métodos de pago" data-en="Payment methods">✓ Métodos de pago integrados</li>
+<li data-es="Dashboard de ventas" data-en="Sales dashboard">✓ Dashboard de ventas</li>
+</ul>
+<span class="price">AR$ 490.000</span>
+<a href="#nosotros-contacto" class="price-cta" data-es="Consultar" data-en="Inquire">Consultar →</a>
 </div>
 
 </div>
