@@ -228,3 +228,62 @@ window.addEventListener('scroll', () => {
     
     lastScroll = currentScroll;
 });
+/* ==================== PANEL EDICIÓN DE VIDEO ==================== */
+const videoService = document.getElementById("videoService");
+const videoPanel = document.getElementById("videoPanel");
+const closeVideoPanel = document.getElementById("closeVideoPanel");
+
+if (videoService) {
+    videoService.addEventListener("click", () => {
+        videoPanel.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+}
+
+if (closeVideoPanel) {
+    closeVideoPanel.addEventListener("click", () => {
+        videoPanel.classList.remove("active");
+        document.body.style.overflow = "";
+    });
+}
+
+/* ==================== PANEL ASESORÍA OBS ==================== */
+const obsService = document.getElementById("obsService");
+const obsPanel = document.getElementById("obsPanel");
+const closeObsPanel = document.getElementById("closeObsPanel");
+
+if (obsService) {
+    obsService.addEventListener("click", () => {
+        obsPanel.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+}
+
+if (closeObsPanel) {
+    closeObsPanel.addEventListener("click", () => {
+        obsPanel.classList.remove("active");
+        document.body.style.overflow = "";
+    });
+}
+
+/* ==================== CERRAR TODOS LOS PANELES CON ESC ==================== */
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        if (webPanel.classList.contains("active")) webPanel.classList.remove("active");
+        if (videoPanel.classList.contains("active")) videoPanel.classList.remove("active");
+        if (obsPanel.classList.contains("active")) obsPanel.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+});
+
+/* ==================== CERRAR PANEL CLICKEANDO FUERA ==================== */
+[webPanel, videoPanel, obsPanel].forEach(panel => {
+    if (panel) {
+        panel.addEventListener("click", (e) => {
+            if (e.target === panel) {
+                panel.classList.remove("active");
+                document.body.style.overflow = "";
+            }
+        });
+    }
+});
