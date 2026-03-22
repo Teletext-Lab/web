@@ -765,3 +765,15 @@ body.light .web-panel {
         padding: 1.5rem;
     }
 }
+/* Grid para 6 servicios (2 filas) */
+.grid-2rows {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+@media (min-width: 1200px) {
+    .grid-2rows {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
