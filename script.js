@@ -25,6 +25,20 @@ function updateLanguage() {
         }
     }
     
+    // Actualizar opciones del select de servicio
+    const servicioSelect = document.getElementById("formServicio");
+    if (servicioSelect) {
+        const options = servicioSelect.options;
+        for (let i = 0; i < options.length; i++) {
+            const opt = options[i];
+            if (lang === "es") {
+                opt.textContent = opt.getAttribute("data-es");
+            } else {
+                opt.textContent = opt.getAttribute("data-en");
+            }
+        }
+    }
+    
     langToggle.textContent = lang === "es" ? "EN" : "ES";
 }
 
@@ -85,24 +99,71 @@ if (webService) {
     });
 }
 
-function closePanel() {
-    webPanel.classList.remove("active");
-    document.body.style.overflow = "";
+function closePanel(panel) {
+    if (panel) {
+        panel.classList.remove("active");
+        document.body.style.overflow = "";
+    }
 }
 
 if (closeWebPanel) {
-    closeWebPanel.addEventListener("click", closePanel);
+    closeWebPanel.addEventListener("click", () => closePanel(webPanel));
 }
 
+
+/* ==================== PANEL EDICIÓN DE VIDEO ==================== */
+const videoService = document.getElementById("videoService");
+const videoPanel = document.getElementById("videoPanel");
+const closeVideoPanel = document.getElementById("closeVideoPanel");
+
+if (videoService) {
+    videoService.addEventListener("click", () => {
+        videoPanel.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+}
+
+if (closeVideoPanel) {
+    closeVideoPanel.addEventListener("click", () => closePanel(videoPanel));
+}
+
+
+/* ==================== PANEL ASESORÍA OBS ==================== */
+const obsService = document.getElementById("obsService");
+const obsPanel = document.getElementById("obsPanel");
+const closeObsPanel = document.getElementById("closeObsPanel");
+
+if (obsService) {
+    obsService.addEventListener("click", () => {
+        obsPanel.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+}
+
+if (closeObsPanel) {
+    closeObsPanel.addEventListener("click", () => closePanel(obsPanel));
+}
+
+
+/* ==================== CERRAR PANEL CON ESC ==================== */
 document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && webPanel.classList.contains("active")) {
-        closePanel();
+    if (e.key === "Escape") {
+        if (webPanel && webPanel.classList.contains("active")) closePanel(webPanel);
+        if (videoPanel && videoPanel.classList.contains("active")) closePanel(videoPanel);
+        if (obsPanel && obsPanel.classList.contains("active")) closePanel(obsPanel);
+        document.body.style.overflow = "";
     }
 });
 
-webPanel.addEventListener("click", (e) => {
-    if (e.target === webPanel) {
-        closePanel();
+
+/* ==================== CERRAR PANEL CLICKEANDO FUERA ==================== */
+[webPanel, videoPanel, obsPanel].forEach(panel => {
+    if (panel) {
+        panel.addEventListener("click", (e) => {
+            if (e.target === panel) {
+                closePanel(panel);
+            }
+        });
     }
 });
 
@@ -119,16 +180,17 @@ document.querySelectorAll('nav a, .cta-button, .price-cta').forEach(anchor => {
                     behavior: 'smooth',
                     block: 'start'
                 });
-                if (webPanel.classList.contains('active')) {
-                    closePanel();
-                }
+                // Cerrar cualquier panel abierto
+                if (webPanel && webPanel.classList.contains('active')) closePanel(webPanel);
+                if (videoPanel && videoPanel.classList.contains('active')) closePanel(videoPanel);
+                if (obsPanel && obsPanel.classList.contains('active')) closePanel(obsPanel);
             }
         }
     });
 });
 
 
-/* ==================== FORMULARIO DE CONTACTO (SECCIÓN DIVIDIDA) ==================== */
+/* ==================== FORMULARIO DE CONTACTO (ENVÍO REAL) ==================== */
 const contactForm = document.getElementById("contactForm");
 const formMessage = document.getElementById("formMessageSplit");
 
@@ -139,6 +201,7 @@ if (contactForm) {
         const nombre = document.getElementById("formNombre").value;
         const email = document.getElementById("formEmail").value;
         const pais = document.getElementById("formPais").value;
+        const servicio = document.getElementById("formServicio").value;
         const mensaje = document.getElementById("formMensaje").value;
         
         if (!nombre || !email || !mensaje) {
@@ -150,43 +213,37 @@ if (contactForm) {
         formMessage.innerHTML = lang === "es" ? "📨 Enviando..." : "📨 Sending...";
         formMessage.style.color = "var(--text-secondary)";
         
-        // Simulación de envío (reemplazar con endpoint real)
-        setTimeout(() => {
-            formMessage.innerHTML = lang === "es" ? "✅ ¡Mensaje enviado! Te contactaremos pronto." : "✅ Message sent! We will contact you soon.";
-            formMessage.style.color = "var(--accent)";
-            contactForm.reset();
-            
-            setTimeout(() => {
-                formMessage.innerHTML = "";
-            }, 5000);
-        }, 1000);
-        
-        // Para enviar realmente, descomentar y configurar endpoint:
-        /*
+        // Envío real con FormSubmit
         const formData = new FormData();
         formData.append("nombre", nombre);
         formData.append("email", email);
         formData.append("pais", pais);
+        formData.append("servicio", servicio);
         formData.append("mensaje", mensaje);
+        formData.append("_subject", `Nuevo contacto desde Textlab - ${nombre}`);
+        formData.append("_replyto", email);
         
         try {
-            const response = await fetch("https://formspree.io/f/tu-endpoint", {
+            const response = await fetch("https://formsubmit.co/teletextlab@gmail.com", {
                 method: "POST",
-                body: formData,
-                headers: { "Accept": "application/json" }
+                body: formData
             });
+            
             if (response.ok) {
-                formMessage.innerHTML = lang === "es" ? "✅ ¡Mensaje enviado!" : "✅ Message sent!";
+                formMessage.innerHTML = lang === "es" ? "✅ ¡Mensaje enviado! Te contactaremos pronto." : "✅ Message sent! We will contact you soon.";
                 formMessage.style.color = "var(--accent)";
                 contactForm.reset();
             } else {
                 throw new Error();
             }
         } catch (error) {
-            formMessage.innerHTML = lang === "es" ? "❌ Error. Escribinos a teletextlab@gmail.com" : "❌ Error. Write to teletextlab@gmail.com";
+            formMessage.innerHTML = lang === "es" ? "❌ Error. Escribinos directamente a teletextlab@gmail.com" : "❌ Error. Write directly to teletextlab@gmail.com";
             formMessage.style.color = "#ff6b6b";
         }
-        */
+        
+        setTimeout(() => {
+            formMessage.innerHTML = "";
+        }, 5000);
     });
 }
 
@@ -227,63 +284,4 @@ window.addEventListener('scroll', () => {
     }
     
     lastScroll = currentScroll;
-});
-/* ==================== PANEL EDICIÓN DE VIDEO ==================== */
-const videoService = document.getElementById("videoService");
-const videoPanel = document.getElementById("videoPanel");
-const closeVideoPanel = document.getElementById("closeVideoPanel");
-
-if (videoService) {
-    videoService.addEventListener("click", () => {
-        videoPanel.classList.add("active");
-        document.body.style.overflow = "hidden";
-    });
-}
-
-if (closeVideoPanel) {
-    closeVideoPanel.addEventListener("click", () => {
-        videoPanel.classList.remove("active");
-        document.body.style.overflow = "";
-    });
-}
-
-/* ==================== PANEL ASESORÍA OBS ==================== */
-const obsService = document.getElementById("obsService");
-const obsPanel = document.getElementById("obsPanel");
-const closeObsPanel = document.getElementById("closeObsPanel");
-
-if (obsService) {
-    obsService.addEventListener("click", () => {
-        obsPanel.classList.add("active");
-        document.body.style.overflow = "hidden";
-    });
-}
-
-if (closeObsPanel) {
-    closeObsPanel.addEventListener("click", () => {
-        obsPanel.classList.remove("active");
-        document.body.style.overflow = "";
-    });
-}
-
-/* ==================== CERRAR TODOS LOS PANELES CON ESC ==================== */
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-        if (webPanel.classList.contains("active")) webPanel.classList.remove("active");
-        if (videoPanel.classList.contains("active")) videoPanel.classList.remove("active");
-        if (obsPanel.classList.contains("active")) obsPanel.classList.remove("active");
-        document.body.style.overflow = "";
-    }
-});
-
-/* ==================== CERRAR PANEL CLICKEANDO FUERA ==================== */
-[webPanel, videoPanel, obsPanel].forEach(panel => {
-    if (panel) {
-        panel.addEventListener("click", (e) => {
-            if (e.target === panel) {
-                panel.classList.remove("active");
-                document.body.style.overflow = "";
-            }
-        });
-    }
 });
