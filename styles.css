@@ -38,21 +38,21 @@ body.dark {
     --input-bg: #1a1a1a;
 }
 
-/* Modo claro */
+/* Modo claro - TONOS GRISES (sin blanco puro) */
 body.light {
-    --bg-primary: #fafafa;
-    --bg-secondary: #ffffff;
-    --bg-card: #ffffff;
-    --bg-header: rgba(255,255,255,0.95);
-    --text-primary: #111111;
-    --text-secondary: #4a4a4a;
+    --bg-primary: #1e1e1e;
+    --bg-secondary: #252525;
+    --bg-card: #2a2a2a;
+    --bg-header: rgba(30,30,30,0.95);
+    --text-primary: #e8e8e8;
+    --text-secondary: #b0b0b0;
     --text-muted: #888888;
-    --accent: #008866;
-    --accent-dark: #006644;
-    --border: #e5e5e5;
-    --card-hover: #f5f5f5;
-    --footer-border: #e0e0e0;
-    --input-bg: #f5f5f5;
+    --accent: #00ffa6;
+    --accent-dark: #00cc88;
+    --border: #3a3a3a;
+    --card-hover: #2f2f2f;
+    --footer-border: #2a2a2a;
+    --input-bg: #2a2a2a;
 }
 
 body {
@@ -147,7 +147,7 @@ nav a:hover {
 }
 
 body.light .hero {
-    background: linear-gradient(135deg, rgba(100,100,100,0.08) 0%, rgba(0,0,0,0.03) 100%);
+    background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
 }
 
 .hero-content {
@@ -572,7 +572,7 @@ footer {
 }
 
 body.light .web-panel {
-    background: rgba(255,255,255,0.98);
+    background: rgba(30,30,30,0.98);
 }
 
 .web-panel.active {
